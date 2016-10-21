@@ -7,7 +7,7 @@ import {
   LOGOUT
 } from '../constants/auth'
 
-export function loginRequest (username, password) {
+export function loginRequest (username: string, password: string) {
   return {
     type: LOGIN_REQUEST,
     username,
@@ -15,7 +15,7 @@ export function loginRequest (username, password) {
   }
 }
 
-export function loginSuccess (user, token) {
+export function loginSuccess (user: string, token: string) {
   return {
     type: LOGIN_SUCCESS,
     user,

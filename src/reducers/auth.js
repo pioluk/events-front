@@ -26,7 +26,31 @@ const initialState: AuthState = {
 export default function authReducer (state: AuthState = initialState, action: any) {
   switch (action.type) {
     case LOGIN_REQUEST:
-      return Object.assign({}, state, { isAuthenticating: true })
+      return {
+        ...state,
+        isAuthenticating: true
+      };
+
+    case LOGIN_SUCCESS:
+      return {
+        ...state,
+        errorMessage: null,
+        isAuthenticated: true,
+        isAuthenticating: false,
+        token: action.token,
+        user: action.user
+      };
+
+    case LOGIN_FAILURE:
+      return {
+        ...state,
+        errorMessage: action.error.message,
+        isAuthenticated: false,
+        isAuthenticating: false
+      };
+
+    case LOGOUT:
+      return initialState;
 
     default:
       return state

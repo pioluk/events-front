@@ -31,7 +31,7 @@ class App extends Component {
         <AppBar
           title="Front"
           iconElementRight={iconElementRight}
-        />
+          zDepth={0} />
         <div>{children}</div>
       </div>
     )
