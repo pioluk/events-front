@@ -7,12 +7,33 @@ import { withRouter } from 'react-router'
 import AppBar from 'material-ui/AppBar'
 import FlatButton from 'material-ui/FlatButton'
 
+import AppMenu from '../components/AppMenu'
 import * as actionCreators from '../actions/auth'
 
 class App extends Component {
 
+  state: {
+    menuOpened: boolean
+  }
+
   constructor(props) {
     super(props)
+    this.state = {
+      menuOpened: false
+    }
+  }
+
+  handleMenuToggle = () => {
+    console.log('handleMenuToggle')
+    this.setState({
+      menuOpened: !this.state.menuOpened
+    })
+  }
+
+  handleMenuRequestChange = opened => {
+    this.setState({
+      menuOpened: opened
+    })
   }
 
   navigateToLogin = () => {
@@ -30,8 +51,12 @@ class App extends Component {
       <div>
         <AppBar
           title="Front"
+          onLeftIconButtonTouchTap={this.handleMenuToggle}
           iconElementRight={iconElementRight}
           zDepth={0} />
+        <AppMenu
+          opened={this.state.menuOpened}
+          onRequestChange={this.handleMenuRequestChange} />
         <div>{children}</div>
       </div>
     )
