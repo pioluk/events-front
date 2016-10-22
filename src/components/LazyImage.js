@@ -7,7 +7,7 @@ export default class LazyImage extends Component {
     color: PropTypes.string,
     small: PropTypes.string,
     image: PropTypes.string.isRequired,
-    width: PropTypes.number.isRequired,
+    width: PropTypes.number,
     height: PropTypes.number.isRequired,
   }
 
@@ -40,7 +40,6 @@ export default class LazyImage extends Component {
       backgroundImage: `url(${small})`,
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat',
-      // backgroundSize: `${width}px ${height}`,
       backgroundSize: 'cover',
       margin: 0,
       overflow: 'hidden',
@@ -52,7 +51,6 @@ export default class LazyImage extends Component {
       top: 0,
       left: 0,
       transition: 'opacity 750ms linear',
-      // width: '100%',
       height: '100%'
     }
 
