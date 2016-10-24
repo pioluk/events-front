@@ -8,3 +8,7 @@ body {
 a {
   text-decoration: none;
 }
+
+.chrome-picker {
+  font-family: inherit !important;
+}

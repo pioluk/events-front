@@ -24,23 +24,23 @@ const styles = {
     justifyContent: 'space-around',
   },
   gridList: {
-    // width: 500,
+    width: 900,
+    margin: '0 auto'
     // height: 450,
     // overflowY: 'auto',
   }
 }
 
-const randomTiles = []
-
 class HomeView extends Component {
 
   componentWillMount() {
-    console.log(this.props)
     this.props.actions.fetchEventsRequest()
   }
 
   render() {
     const { events } = this.props
+
+    console.log('events', events)
 
     return(
       <div style={{ padding: 20 }}>
@@ -56,8 +56,9 @@ class HomeView extends Component {
               title={<Link style={{ color: 'inherit', textDecoration: 'none' }} to={`/event/${event.id}`}>{event.title}</Link>}>
               <LazyImage
                 height={200}
+                color={'#' + event.color}
                 small={'data:image/jpeg;base64,' + event.imageThumbnail}
-                image={'file://'+event.imageSmall} />
+                image={event.imageSmall} />
             </GridTile>
            )}
         </GridList>
