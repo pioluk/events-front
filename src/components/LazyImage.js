@@ -16,16 +16,23 @@ export default class LazyImage extends Component {
     this.state = {
       largeImage: null
     }
+    this.timeout = null
   }
 
   componentWillMount() {
     const largeImage = new Image()
     largeImage.onload = () => {
-      setTimeout(() => {
+      this.timeout = setTimeout(() => {
         this.setState({ largeImage })
-      }, Math.random() * 2200)
+      }, Math.random() * 2200) // TODO: remove for production
     }
     largeImage.src = this.props.image
+  }
+
+  componentWillUnmount() {
+    if (typeof this.timeout === 'number') {
+      clearTimeout(this.timeout)
+    }
   }
 
   render() {
