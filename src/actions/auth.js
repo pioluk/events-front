@@ -23,7 +23,7 @@ export function loginSuccess (user: string, token: string) {
   }
 }
 
-export function loginFailure (error) {
+export function loginFailure (error: Error) {
   return {
     type: LOGIN_FAILURE,
     error
