@@ -29,6 +29,7 @@ class ColorPicker extends Component {
   }
 
   static propTypes = {
+    color: PropTypes.string,
     label: PropTypes.string.isRequired,
     onChange: PropTypes.func,
     onChangeComplete: PropTypes.func
@@ -37,13 +38,13 @@ class ColorPicker extends Component {
   constructor(props: any) {
     super(props)
     this.state = {
-      color: '#fff',
+      color: this.props.color || '#fff',
       opened: false,
       anchorEl: null
     }
   }
 
-  handleTouchTap = e => {
+  handleTouchTap = (e: Event) => {
     this.setState({
       opened: true,
       anchorEl: e.currentTarget
@@ -57,7 +58,7 @@ class ColorPicker extends Component {
     })
   }
 
-  handleChange = color => {
+  handleChange = (color: any) => {
     this.setState({
       ...this.state,
       color: color.hex
@@ -67,7 +68,7 @@ class ColorPicker extends Component {
       && this.props.onChange(null, color.hex)
   }
 
-  handleChangeComplete = color => {
+  handleChangeComplete = (color: any) => {
     typeof this.props.onChangeComplete === 'function'
       && this.props.onChangeComplete(null, color.hex)
   }
