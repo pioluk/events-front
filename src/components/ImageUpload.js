@@ -32,16 +32,20 @@ const styles = {
 
 export default class ImageUpload extends Component {
 
+  state: {
+    file: ?File
+  }
+
   static propTypes = {
     onSelect: PropTypes.func
   }
 
-  constructor(props) {
+  constructor(props: any) {
     super(props)
     this.state = { file: null }
   }
 
-  handleDrop = files => {
+  handleDrop = (files: Array<File>) => {
     if (files instanceof Array && files.length === 1) {
       const file = files[0]
       this.setState({ file })
@@ -50,7 +54,7 @@ export default class ImageUpload extends Component {
     }
   }
 
-  renderImage = file => {
+  renderImage = (file: File) => {
     return (
       <div>
         <img src={file.preview} style={styles.image} alt="File to upload" />
