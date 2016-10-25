@@ -1,6 +1,9 @@
-import { Component } from 'react'
+// @flow
+
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
+import { displayNotification } from '../actions/notifications'
 
 export function requireAuthentication(WrappedComponent: Component<any, any, any>) {
   class AuthenticatedComponent extends Component {
@@ -16,6 +19,7 @@ export function requireAuthentication(WrappedComponent: Component<any, any, any>
     checkAuth (isAuthenticated) {
       if (!isAuthenticated) {
         const redirectAfterLogin = this.props.location.pathname
+        this.props.displayNotification('You need to be logged in.')
         this.props.router.push('/login')
       }
     }
@@ -39,5 +43,9 @@ export function requireAuthentication(WrappedComponent: Component<any, any, any>
     isAuthenticated: state.auth.isAuthenticated
   })
 
-  return withRouter(connect(mapStateToProps)(AuthenticatedComponent))
+  const mapDispatchToProps = dispatch => ({
+    displayNotification: message => dispatch(displayNotification(message))
+  })
+
+  return withRouter(connect(mapStateToProps, mapDispatchToProps)(AuthenticatedComponent))
 }
