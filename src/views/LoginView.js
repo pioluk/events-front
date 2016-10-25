@@ -1,6 +1,7 @@
 /* @flow */
 
 import React, { Component } from 'react'
+import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
 import { red500 } from 'material-ui/styles/colors'

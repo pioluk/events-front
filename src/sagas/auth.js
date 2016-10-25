@@ -1,7 +1,8 @@
 import { call, take, put } from 'redux-saga/effects'
 import { browserHistory } from 'react-router'
 import { LOGIN_REQUEST } from '../constants/auth'
-import * as actionCreators from '../actions/auth'
+import * as authActions from '../actions/auth'
+import * as notificationActions from '../actions/notifications'
 import { login } from '../api/auth'
 
 export function* loginFlow () {
@@ -12,12 +13,14 @@ export function* loginFlow () {
       if (user && token) {
         localStorage.setItem('user', JSON.stringify(user));
         localStorage.setItem('token', token);
-        yield put(actionCreators.loginSuccess(user, token));
+        yield put(authActions.loginSuccess(user, token));
+        yield put(notificationActions.displayNotification('Successfully logged in.'))
         browserHistory.push('/');
       }
     }
-    catch (e) {
-      yield put(actionCreators.loginFailure(e));
+    catch (err) {
+      yield put(authActions.loginFailure(err))
+      yield put(notificationActions.displayNotification('Error: ' + err.message))
     }
   }
 }

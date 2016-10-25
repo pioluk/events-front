@@ -8,6 +8,7 @@ import AppBar from 'material-ui/AppBar'
 import FlatButton from 'material-ui/FlatButton'
 
 import AppMenu from '../components/AppMenu'
+import Notifications from './Notifications'
 import * as actionCreators from '../actions/auth'
 
 class App extends Component {
@@ -58,6 +59,7 @@ class App extends Component {
           opened={this.state.menuOpened}
           onRequestChange={this.handleMenuRequestChange} />
         <div>{children}</div>
+        <Notifications />
       </div>
     )
   }
