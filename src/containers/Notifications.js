@@ -15,14 +15,16 @@ class Notifications extends Component {
     this.state = { opened: false }
   }
 
-  componentWillUpdate(nextProps, nextState) {
+  componentWillUpdate(nextProps) {
     if (this.props.id !== nextProps.id) {
       this.setState({ opened: true })
     }
   }
 
-  handleRequestClose = () => {
-    this.setState({ opened: false })
+  handleRequestClose = (reason: string) => {
+    if (reason === 'timeout') {
+      this.setState({ opened: false })
+    }
   }
 
   render() {
