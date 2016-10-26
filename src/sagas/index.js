@@ -1,9 +1,10 @@
 import { loginFlow } from './auth'
-import { getEventsFlow } from './events'
+import { getEventsFlow, createEventFlow } from './events'
 
 export default function* rootSaga () {
   yield [
     loginFlow(),
-    getEventsFlow()
+    getEventsFlow(),
+    createEventFlow()
   ]
 }

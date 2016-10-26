@@ -45,7 +45,7 @@ class App extends Component {
     const { isAuthenticated, children } = this.props
 
     const iconElementRight = isAuthenticated
-      ? (<FlatButton label="Logout" />)
+      ? (<FlatButton label="Logout" onClick={this.props.actions.logout} />)
       : (<FlatButton label="Login" onClick={this.navigateToLogin} />);
 
     return (
