@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import R from 'ramda'
 import * as actionCreators from '../actions/events'
+import createValidatedForm from '../components/FormValidate'
 import EventForm from '../components/EventForm'
 
 const styles = {
@@ -45,24 +46,19 @@ class EventAddView extends Component {
     }
   }
 
-  handleSubmit = e => {
+  handleSubmit = (e, formData) => {
     e.preventDefault()
-    this.props.actions.addEvent(this.state.formData)
+    this.props.actions.addEvent(formData)
   }
 
-  handleChange = R.curry((name: string, value: any) => {
-    const newState = R.assocPath(['formData', name], value, this.state)
-    this.setState(newState)
-  })
-
   render() {
+    const FormValidate = createValidatedForm(this.state, {})(EventForm)
+
     return (
       <div style={styles.root}>
-        <pre>{JSON.stringify(this.state, null, 2)}</pre>
-        <EventForm
+        <FormValidate
           formData={this.state.formData}
-          onSubmit={this.handleSubmit}
-          onChange={this.handleChange} />
+          onSubmit={this.handleSubmit} />
       </div>
     )
   }

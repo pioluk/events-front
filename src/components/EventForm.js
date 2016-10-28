@@ -98,5 +98,4 @@ const EventForm = ({ formData, onChange, onSubmit, errors = {} }) =>
     </Paper>
   </form>
 
-
 export default EventForm
