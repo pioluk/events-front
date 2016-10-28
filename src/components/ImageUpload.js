@@ -67,7 +67,7 @@ export default class ImageUpload extends Component {
 
     const dropzoneStyles = isFileSelected
       ? Object.assign({}, styles.dropzone, { height: 'auto', maxHeight: 200 })
-      : styles.root
+      : styles.dropzone
 
     return (
       <div style={styles.root}>
