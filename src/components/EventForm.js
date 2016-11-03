@@ -9,6 +9,8 @@ import TimePicker from 'material-ui/TimePicker'
 import RaisedButton from 'material-ui/RaisedButton'
 import ColorPicker from '../components/ColorPicker'
 import ImageUpload from '../components/ImageUpload'
+import Error from '../components/Error'
+import ErrorBar from '../components/ErrorBar'
 
 const getValue = R.path(['target', 'value'])
 
@@ -41,6 +43,7 @@ const EventForm = ({ formData, onChange, onSubmit, errors = {} }) =>
         floatingLabelText="Title"
         fullWidth={true}
         value={formData.title}
+        errorText={errors.title}
         onChange={R.compose(onChange('title'), getValue)} />
 
       <TextField
@@ -49,6 +52,7 @@ const EventForm = ({ formData, onChange, onSubmit, errors = {} }) =>
         multiLine={true}
         rows={3}
         value={formData.description}
+        errorText={errors.description}
         onChange={R.compose(onChange('description'), getValue)} />
 
       <div style={styles.dateTimePicker}>
@@ -66,6 +70,12 @@ const EventForm = ({ formData, onChange, onSubmit, errors = {} }) =>
           value={formData.timeStart || null}
           onChange={R.compose(onChange('timeStart'), getSecondArg)} />
       </div>
+      { (!!errors.dateStart || !!errors.timeStart)
+           && <div>
+                <ErrorBar />
+                <Error message={'Start date is required.'} />
+              </div>
+      }
 
       <div style={styles.dateTimePicker}>
         <DatePicker
@@ -82,6 +92,12 @@ const EventForm = ({ formData, onChange, onSubmit, errors = {} }) =>
           value={formData.timeEnd || null}
           onChange={R.compose(onChange('timeEnd'), getSecondArg)} />
       </div>
+      { (!!errors.dateEnd || !!errors.timeEnd)
+           && <div>
+                <ErrorBar />
+                <Error message={'End date is required.'} />
+              </div>
+      }
 
       <ColorPicker
         label="Color"
