@@ -11,6 +11,7 @@ import ColorPicker from '../components/ColorPicker'
 import ImageUpload from '../components/ImageUpload'
 import Error from '../components/Error'
 import ErrorBar from '../components/ErrorBar'
+import InputList from '../components/InputList'
 
 const getValue = R.path(['target', 'value'])
 
@@ -107,10 +108,32 @@ const EventForm = ({ formData, onChange, onSubmit, errors = {} }) =>
       <ImageUpload
         onSelect={R.compose(onChange('image'), getSecondArg)} />
 
+      <div>
+        <h4>Emails</h4>
+        <InputList
+        items={formData.emails}
+        onChange={onChange('emails')} />
+      </div>
+
+      <div>
+        <h4>Phones</h4>
+        <InputList
+        items={formData.phones}
+        onChange={onChange('phones')} />
+      </div>
+
+      <div>
+        <h4>Websites</h4>
+        <InputList
+        items={formData.websites}
+        onChange={onChange('websites')} />
+      </div>
+
       <RaisedButton
         type="submit"
         primary={true}
         label="Create" />
+
     </Paper>
   </form>
 

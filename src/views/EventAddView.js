@@ -38,7 +38,10 @@ const validations = {
   color: [
     [ isNonEmptyString, 'Color cannot be empty.' ]
   ],
-  image: []
+  image: [],
+  emails: [],
+  phones: [],
+  websites: []
 }
 
 class EventAddView extends Component {
@@ -52,7 +55,10 @@ class EventAddView extends Component {
       dateEnd: string,
       timeEnd: string,
       color: string,
-      image: ?any
+      image: ?any,
+      emails: Array<string>,
+      phones: Array<string>,
+      websites: Array<string>
     }
   }
 
@@ -67,7 +73,10 @@ class EventAddView extends Component {
         dateEnd: new Date(),
         timeEnd: new Date(),
         color: '#de12fe',
-        image: null
+        image: null,
+        emails: ['a@b.com', 'v@as.co.uk'],
+        phones: [],
+        websites: []
       }
     }
   }
