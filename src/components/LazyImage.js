@@ -22,9 +22,7 @@ export default class LazyImage extends Component {
   componentWillMount() {
     const largeImage = new Image()
     largeImage.onload = () => {
-      this.timeout = setTimeout(() => {
-        this.setState({ largeImage })
-      }, Math.random() * 2200) // TODO: remove for production
+      this.setState({ largeImage })
     }
     largeImage.src = this.props.image
   }
