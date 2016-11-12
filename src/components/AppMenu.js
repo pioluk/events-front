@@ -2,16 +2,20 @@
 
 import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
-import Drawer from 'material-ui/Drawer'
-import MenuItem from 'material-ui/MenuItem'
+import Drawer from 'react-toolbox/lib/drawer'
+import { MenuItem } from 'react-toolbox/lib/menu'
+
+import { menuItem } from './AppMenu.scss'
+
+const AlignedMenuItem = ({ children }) =>
+  <MenuItem className={menuItem}>{children}</MenuItem>
 
 const AppMenu = ({ opened, onRequestChange }) => (
   <Drawer
-    docked={false}
-    open={opened}
-    onRequestChange={onRequestChange}>
+    active={opened}
+    onOverlayClick={onRequestChange}>
     <Link to="/">
-      <MenuItem>Home</MenuItem>
+      <AlignedMenuItem>Home</AlignedMenuItem>
     </Link>
   </Drawer>
 )

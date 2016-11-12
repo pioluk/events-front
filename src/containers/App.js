@@ -4,9 +4,10 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
-import AppBar from 'material-ui/AppBar'
+// import AppBar from 'react-toolbox/lib/app_bar'
 import FlatButton from 'material-ui/FlatButton'
 
+import AppBar from '../components/AppBar'
 import AppMenu from '../components/AppMenu'
 import Notifications from './Notifications'
 import * as actionCreators from '../actions/auth'
@@ -31,10 +32,10 @@ class App extends Component {
     })
   }
 
-  handleMenuRequestChange = opened => {
-    this.setState({
-      menuOpened: opened
-    })
+  handleMenuRequestChange = () => {
+    this.setState(state => ({
+      menuOpened: !state.menuOpened
+    }))
   }
 
   navigateToLogin = () => {
@@ -44,17 +45,13 @@ class App extends Component {
   render() {
     const { isAuthenticated, children } = this.props
 
-    const iconElementRight = isAuthenticated
-      ? (<FlatButton label="Logout" onClick={this.props.actions.logout} />)
-      : (<FlatButton label="Login" onClick={this.navigateToLogin} />);
-
     return (
       <div>
         <AppBar
-          title="Front"
-          onLeftIconButtonTouchTap={this.handleMenuToggle}
-          iconElementRight={iconElementRight}
-          zDepth={0} />
+          isAuthenticated={isAuthenticated}
+          onMenuToggle={this.handleMenuToggle}
+          onLoginClick={this.navigateToLogin}
+          onLogoutClick={this.props.actions.logout} />
         <AppMenu
           opened={this.state.menuOpened}
           onRequestChange={this.handleMenuRequestChange} />
