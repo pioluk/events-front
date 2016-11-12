@@ -4,17 +4,13 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-import { red500 } from 'material-ui/styles/colors'
-import Paper from 'material-ui/Paper'
-import TextField from 'material-ui/TextField'
-import RaisedButton from 'material-ui/RaisedButton'
+import Card from 'react-toolbox/lib/card'
+import Input from 'react-toolbox/lib/input'
+import Button from 'react-toolbox/lib/button'
 
 import { loginRequest } from '../actions/auth'
 
-const loginViewStyle = {
-  maxWidth: 375,
-  margin: '50px auto'
-}
+import { wrapper, error, card } from './LoginView.scss'
 
 class LoginView extends Component {
   state: {
@@ -30,13 +26,11 @@ class LoginView extends Component {
     }
   }
 
-  handleUsernameChange = e => {
-    const username = e.target.value
+  handleUsernameChange = (username: string) => {
     this.setState({ ...this.state, username })
   }
 
-  handlePasswordChange = e => {
-    const password = e.target.value
+  handlePasswordChange = (password: string) => {
     this.setState({ ...this.state, password })
   }
 
@@ -50,27 +44,25 @@ class LoginView extends Component {
     const { isAuthenticating, errorMessage, loginRequest } = this.props
 
     return (
-      <div style={loginViewStyle}>
+      <div className={wrapper}>
         <form onSubmit={this.handleSubmit}>
-          <Paper style={{ padding: '3em 2em 2em 3em' }}>
+          <Card className={card}>
             { !!errorMessage
-              && <div style={{color: red500}}>{errorMessage}</div>
+              && <div className={error}>{errorMessage}</div>
             }
-            <TextField
-              hintText="Username"
-              fullWidth={true}
+            <Input
+              label="Username"
               onChange={this.handleUsernameChange} />
-            <TextField
-              hintText="Password"
-              fullWidth={true}
+            <Input
+              type="password"
+              label="Password"
               onChange={this.handlePasswordChange} />
-            <RaisedButton
-              primary={true}
+            <Button
+              primary
+              raised
               type="submit"
-              label="Login"
-              disabled={isAuthenticating}
-              style={{ width: '100%' }} />
-          </Paper>
+              label="Login" />
+          </Card>
         </form>
       </div>
     )
