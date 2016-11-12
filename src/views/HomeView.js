@@ -5,17 +5,11 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import { GridList, GridTile } from 'material-ui/GridList'
-import FloatingActionButton from 'material-ui/FloatingActionButton'
-import ContentAdd from 'material-ui/svg-icons/content/add'
+
+import LazyImage from '../components/LazyImage'
+import Fab from '../components/Fab'
 
 import * as actionCreators from '../actions/events'
-import LazyImage from '../components/LazyImage'
-
-const fabStyle = {
-  position: 'fixed',
-  right: 16,
-  bottom: 16
-}
 
 const styles = {
   root: {
@@ -61,10 +55,9 @@ class HomeView extends Component {
            )}
         </GridList>
 
+
         <Link to="/event/new">
-          <FloatingActionButton style={fabStyle}>
-            <ContentAdd />
-          </FloatingActionButton>
+          <Fab icon="add" label="Add a new event" />
         </Link>
       </div>
     )
