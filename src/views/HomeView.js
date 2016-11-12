@@ -40,8 +40,6 @@ class HomeView extends Component {
   render() {
     const { events } = this.props
 
-    console.log('events', events)
-
     return(
       <div style={{ padding: 20 }}>
         <h3>HomeView</h3>

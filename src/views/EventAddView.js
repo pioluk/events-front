@@ -41,7 +41,8 @@ const validations = {
   image: [],
   emails: [],
   phones: [],
-  websites: []
+  websites: [],
+  location: []
 }
 
 class EventAddView extends Component {
@@ -58,7 +59,8 @@ class EventAddView extends Component {
       image: ?any,
       emails: Array<string>,
       phones: Array<string>,
-      websites: Array<string>
+      websites: Array<string>,
+      location: any
     }
   }
 
@@ -76,7 +78,8 @@ class EventAddView extends Component {
         image: null,
         emails: ['a@b.com', 'v@as.co.uk'],
         phones: [],
-        websites: []
+        websites: [],
+        location: {}
       }
     }
   }

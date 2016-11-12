@@ -12,6 +12,7 @@ import ImageUpload from '../components/ImageUpload'
 import Error from '../components/Error'
 import ErrorBar from '../components/ErrorBar'
 import InputList from '../components/InputList'
+import LocationChooser from '../components/LocationChooser'
 
 const getValue = R.path(['target', 'value'])
 
@@ -72,10 +73,10 @@ const EventForm = ({ formData, onChange, onSubmit, errors = {} }) =>
           onChange={R.compose(onChange('timeStart'), getSecondArg)} />
       </div>
       { (!!errors.dateStart || !!errors.timeStart)
-           && <div>
-                <ErrorBar />
-                <Error message={'Start date is required.'} />
-              </div>
+        && <div>
+          <ErrorBar />
+          <Error message={'Start date is required.'} />
+        </div>
       }
 
       <div style={styles.dateTimePicker}>
@@ -94,10 +95,10 @@ const EventForm = ({ formData, onChange, onSubmit, errors = {} }) =>
           onChange={R.compose(onChange('timeEnd'), getSecondArg)} />
       </div>
       { (!!errors.dateEnd || !!errors.timeEnd)
-           && <div>
-                <ErrorBar />
-                <Error message={'End date is required.'} />
-              </div>
+        && <div>
+          <ErrorBar />
+          <Error message={'End date is required.'} />
+        </div>
       }
 
       <ColorPicker
@@ -107,6 +108,8 @@ const EventForm = ({ formData, onChange, onSubmit, errors = {} }) =>
 
       <ImageUpload
         onSelect={R.compose(onChange('image'), getSecondArg)} />
+
+      <LocationChooser />
 
       <div>
         <h4>Emails</h4>
