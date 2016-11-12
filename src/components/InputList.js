@@ -1,18 +1,9 @@
 import React, { Component, PropTypes } from 'react'
 import { assoc, dissoc, mapObjIndexed, values } from 'ramda'
-import TextField from 'material-ui/TextField'
-import FlatButton from 'material-ui/FlatButton'
-import IconButton from 'material-ui/IconButton'
-import ContentAdd from 'material-ui/svg-icons/content/add'
-import ContentRemove from 'material-ui/svg-icons/content/remove'
+import { Button, IconButton } from 'react-toolbox/lib/button'
+import Input from 'react-toolbox/lib/input'
 
-const styles = {
-  ul: {
-    margin: 0,
-    padding: 0,
-    listStyleType: 'none'
-  }
-}
+import { list, listItemInput } from './InputList.scss'
 
 class InputList extends Component {
 
@@ -34,8 +25,8 @@ class InputList extends Component {
     this.props.onChange(values(this.state.items))
   }
 
-  handleFieldChange = id => e => {
-    const items = assoc(id, e.target.value)
+  handleFieldChange = id => value => {
+    const items = assoc(id, value)
     this.setState(
       state => assoc('items', items(state.items), state),
       this.emitChange
@@ -59,11 +50,8 @@ class InputList extends Component {
   renderItem = (value, key) => {
     return (
       <li key={key}>
-        <TextField value={value} onChange={this.handleFieldChange(key)} />
-
-        <IconButton tooltip="Remove" onClick={this.handleFieldRemove(key)}>
-          <ContentRemove />
-        </IconButton>
+        <Input className={listItemInput} value={value} onChange={this.handleFieldChange(key)} />
+        <IconButton icon="remove" title="Remove" onClick={this.handleFieldRemove(key)} />
       </li>
     )
   }
@@ -74,12 +62,12 @@ class InputList extends Component {
 
     return (
       <div>
-        <ul style={styles.ul}>
+        <ul className={list}>
           {itemsArray}
         </ul>
-        <FlatButton
+        <Button
           label="Add"
-          icon={<ContentAdd />}
+          icon="add"
           onClick={this.handleFieldAdd} />
       </div>
     )

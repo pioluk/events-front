@@ -11,7 +11,7 @@ import { isDate, isNonEmptyString } from '../validation'
 
 const styles = {
   root: {
-    maxWidth: 500,
+    maxWidth: 600,
     margin: '50px auto'
   }
 }

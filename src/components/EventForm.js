@@ -2,11 +2,11 @@
 
 import R from 'ramda'
 import React from 'react'
-import Paper from 'material-ui/Paper'
-import TextField from 'material-ui/TextField'
 import DatePicker from 'material-ui/DatePicker'
 import TimePicker from 'material-ui/TimePicker'
-import RaisedButton from 'material-ui/RaisedButton'
+import { Button } from 'react-toolbox/lib/button'
+import Card from 'react-toolbox/lib/card'
+import Input from 'react-toolbox/lib/input'
 import ColorPicker from '../components/ColorPicker'
 import ImageUpload from '../components/ImageUpload'
 import Error from '../components/Error'
@@ -18,55 +18,33 @@ const getValue = R.path(['target', 'value'])
 
 const getSecondArg = (_, arg) => arg
 
-const styles = {
-  paper: {
-    padding: '3em 2em 2em 3em'
-  },
-  datePicker: {
-    flex: 3,
-    maxWidth: '40%',
-    overflow: 'hidden',
-    marginRight: 24
-  },
-  timePicker: {
-    flex: 2,
-    maxWidth: '20%',
-    overflow: 'hidden'
-  },
-  dateTimePicker: {
-    'display': 'flex',
-  }
-}
+import { card, datePicker, timePicker, dateTimePicker } from './EventForm.scss'
 
 const EventForm = ({ formData, onChange, onSubmit, errors = {} }) =>
   <form onSubmit={onSubmit}>
-    <Paper style={styles.paper}>
-      <TextField
-        floatingLabelText="Title"
-        fullWidth={true}
+    <Card className={card}>
+      <Input
+        label="Title"
         value={formData.title}
-        errorText={errors.title}
-        onChange={R.compose(onChange('title'), getValue)} />
+        error={errors.title}
+        onChange={onChange('title')} />
 
-      <TextField
-        floatingLabelText="Description"
-        fullWidth={true}
-        multiLine={true}
-        rows={3}
+      <Input
+        label="Description"
         value={formData.description}
-        errorText={errors.description}
-        onChange={R.compose(onChange('description'), getValue)} />
+        error={errors.description}
+        onChange={onChange('description')} />
 
-      <div style={styles.dateTimePicker}>
+      <div className={dateTimePicker}>
         <DatePicker
-          style={styles.datePicker}
+          className={datePicker}
           hintText="Date Start"
           mode="landscape"
           value={formData.dateStart || null}
           onChange={R.compose(onChange('dateStart'), getSecondArg)} />
 
         <TimePicker
-          style={styles.timePicker}
+          className={timePicker}
           hintText="Time"
           format="24hr"
           value={formData.timeStart || null}
@@ -79,16 +57,16 @@ const EventForm = ({ formData, onChange, onSubmit, errors = {} }) =>
         </div>
       }
 
-      <div style={styles.dateTimePicker}>
+      <div className={dateTimePicker}>
         <DatePicker
-          style={styles.datePicker}
+          className={datePicker}
           hintText="Date End"
           mode="landscape"
           value={formData.dateEnd || null}
           onChange={R.compose(onChange('dateEnd'), getSecondArg)} />
 
         <TimePicker
-          style={styles.timePicker}
+          className={timePicker}
           hintText="Time"
           format="24hr"
           value={formData.timeEnd || null}
@@ -114,30 +92,31 @@ const EventForm = ({ formData, onChange, onSubmit, errors = {} }) =>
       <div>
         <h4>Emails</h4>
         <InputList
-        items={formData.emails}
-        onChange={onChange('emails')} />
+          items={formData.emails}
+          onChange={onChange('emails')} />
       </div>
 
       <div>
         <h4>Phones</h4>
         <InputList
-        items={formData.phones}
-        onChange={onChange('phones')} />
+          items={formData.phones}
+          onChange={onChange('phones')} />
       </div>
 
       <div>
         <h4>Websites</h4>
         <InputList
-        items={formData.websites}
-        onChange={onChange('websites')} />
+          items={formData.websites}
+          onChange={onChange('websites')} />
       </div>
 
-      <RaisedButton
+      <Button
+        primary
+        raised
         type="submit"
-        primary={true}
         label="Create" />
 
-    </Paper>
+    </Card>
   </form>
 
 export default EventForm

@@ -1,0 +1,20 @@
+.card {
+  padding: 3em 2em 2em 3em;
+}
+
+.datePicker {
+  flex: 3;
+  max-width: 40%;
+  overflow: hidden;
+  margin-right: 24;
+}
+
+.timePicker {
+  flex: 2;
+  max-width: 20%;
+  overflow: hidden;
+}
+
+.dateTimePicker {
+  display: flex;
+}
