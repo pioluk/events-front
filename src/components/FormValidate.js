@@ -2,7 +2,6 @@
 
 import R from 'ramda'
 import React, { Component } from 'react'
-import Either from 'data.either'
 import { getErrors } from '../validation'
 
 const createValidatedForm = (initialState: any, validations: Array<any>) => BaseComponent =>

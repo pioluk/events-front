@@ -3,32 +3,36 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { Link } from 'react-router'
+import { withRouter, Link } from 'react-router'
 import { GridList, GridTile } from 'material-ui/GridList'
 
 import LazyImage from '../components/LazyImage'
 import Fab from '../components/Fab'
 
-import * as actionCreators from '../actions/events'
+import { fetchEventsRequest } from '../actions/events'
+import { selectEvent } from '../actions/ui'
 
 const styles = {
   root: {
     display: 'flex',
     flexWrap: 'wrap',
-    justifyContent: 'space-around',
+    justifyContent: 'space-around'
   },
   gridList: {
     width: 900,
     margin: '0 auto'
-    // height: 450,
-    // overflowY: 'auto',
   }
 }
 
 class HomeView extends Component {
 
   componentWillMount() {
-    this.props.actions.fetchEventsRequest()
+    this.props.fetchEventsRequest()
+  }
+
+  navigateToEvent = (event: any) => {
+    this.props.router.push(`/event/${event.id}`)
+    this.props.selectEvent(event.color, event.imageThumbnail, event.imageBig)
   }
 
   render() {
@@ -45,8 +49,15 @@ class HomeView extends Component {
           {events.map(event =>
             <GridTile
               key={event.id}
-              title={<Link style={{ color: 'inherit', textDecoration: 'none' }} to={`/event/${event.id}`}>{event.title}</Link>}>
+              title={
+                <Link
+                  style={{ color: 'inherit', textDecoration: 'none' }}
+                  onClick={() => this.navigateToEvent(event)}>
+                  {event.title}
+                </Link>
+              }>
               <LazyImage
+                keepAspect={true}
                 height={200}
                 color={'#' + event.color}
                 small={'data:image/jpeg;base64,' + event.imageThumbnail}
@@ -54,7 +65,6 @@ class HomeView extends Component {
             </GridTile>
            )}
         </GridList>
-
 
         <Link to="/event/new">
           <Fab icon="add" label="Add a new event" />
@@ -70,7 +80,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(actionCreators, dispatch)
+  fetchEventsRequest: () => dispatch(fetchEventsRequest()),
+  selectEvent: (color, thumbnail, image) => dispatch(selectEvent(color, thumbnail, image))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomeView)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(HomeView))

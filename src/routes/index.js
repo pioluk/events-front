@@ -7,6 +7,7 @@ import App from '../containers/App'
 import HomeView from '../views/HomeView'
 import LoginView from '../views/LoginView'
 import EventAddView from '../views/EventAddView'
+import EventDetailsView from '../views/EventDetailsView'
 import NotFoundView from '../views/NotFoundView'
 
 const routes = (
@@ -14,6 +15,7 @@ const routes = (
     <IndexRoute component={HomeView} />
     <Route path="/login" component={LoginView} />
     <Route path="/event/new" component={requireAuthentication(EventAddView)} />
+    <Route path="event/:id" component={EventDetailsView} />
     <Route path="*" component={NotFoundView} />
   </Route>
 )

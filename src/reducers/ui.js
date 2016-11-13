@@ -1,15 +1,25 @@
 /* @flow */
 
 type UiState = {
-  loggedIn: boolean
+  selectedEventColor: string,
+  selectedEventThumbnail: string
 }
 
 const initialState: UiState = {
-  loggedIn: false
+  selectedEventColor: '',
+  selectedEventThumbnail: '',
+  selectedEventImage: ''
 }
 
-export default function uiReducer (state: UiState = initialState, action): UiState {
+export default function uiReducer (state: UiState = initialState, action: any): UiState {
   switch (action.type) {
+    case 'SELECT_EVENT':
+      return {
+        selectedEventColor: action.color,
+        selectedEventThumbnail: action.thumbnail,
+        selectedEventImage: action.image
+      }
+
     default:
       return state
   }

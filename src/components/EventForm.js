@@ -14,8 +14,6 @@ import ErrorBar from '../components/ErrorBar'
 import InputList from '../components/InputList'
 import LocationChooser from '../components/LocationChooser'
 
-const getValue = R.path(['target', 'value'])
-
 const getSecondArg = (_, arg) => arg
 
 import { card, datePicker, timePicker, dateTimePicker } from './EventForm.scss'

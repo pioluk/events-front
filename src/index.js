@@ -4,7 +4,7 @@ import 'react-toolbox/lib/commons.scss'
 import React from 'react'
 import { render } from 'react-dom'
 import { browserHistory } from 'react-router'
-import injectTapEventPlugin from 'react-tap-event-plugin'
+import { syncHistoryWithStore } from 'react-router-redux'
 
 import configureStore from './store/configureStore'
 import Root from './containers/Root'
@@ -13,9 +13,8 @@ import { displayNotification } from './actions/notifications'
 
 import './index.css'
 
-injectTapEventPlugin()
-
-const store = configureStore()
+const store = configureStore({}, browserHistory)
+const history = syncHistoryWithStore(browserHistory, store)
 
 try {
   const user = JSON.parse(localStorage.getItem('user'));
@@ -33,6 +32,6 @@ catch (err) {
 }
 
 render(
-  <Root history={browserHistory} store={store} />,
+  <Root history={history} store={store} />,
   document.getElementById('root')
 )

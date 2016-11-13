@@ -6,7 +6,7 @@ import Button from 'react-toolbox/lib/button'
 
 import { button, right } from './AppBar.scss'
 
-const AppBar = ({ onMenuToggle, isAuthenticated, onLoginClick, onLogoutClick, ...props }) => (
+const AppBar = ({ onMenuToggle, isAuthenticated, onLoginClick, onLogoutClick, children, ...props }) => (
   <RTAppBar
       flat
       leftIcon="menu"
@@ -19,6 +19,7 @@ const AppBar = ({ onMenuToggle, isAuthenticated, onLoginClick, onLogoutClick, ..
           : <Button className={button} label="Login" onClick={onLoginClick} />
       }
     </div>
+    <div>{children}</div>
   </RTAppBar>
 )
 
