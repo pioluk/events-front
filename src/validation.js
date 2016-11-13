@@ -1,9 +1,6 @@
 // @flow
 
 import R from 'ramda'
-import Either from 'data.either'
-
-const { Right, Left } = Either
 
 const makePredicate = ([predFn, e]) => a => predFn(a) ? null : e
 

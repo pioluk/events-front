@@ -3,7 +3,6 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import R from 'ramda'
 import * as actionCreators from '../actions/events'
 import createValidatedForm from '../components/FormValidate'
 import EventForm from '../components/EventForm'

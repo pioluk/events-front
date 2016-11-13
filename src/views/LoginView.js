@@ -1,7 +1,6 @@
 /* @flow */
 
 import React, { Component } from 'react'
-import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
 import Card from 'react-toolbox/lib/card'
@@ -41,7 +40,7 @@ class LoginView extends Component {
   }
 
   render() {
-    const { isAuthenticating, errorMessage, loginRequest } = this.props
+    const { isAuthenticating, errorMessage } = this.props
 
     return (
       <div className={wrapper}>
@@ -61,7 +60,8 @@ class LoginView extends Component {
               primary
               raised
               type="submit"
-              label="Login" />
+              label="Login"
+              disabled={isAuthenticating} />
           </Card>
         </form>
       </div>

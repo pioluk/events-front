@@ -1,3 +1,5 @@
+// @flow
+
 import React, { Component, PropTypes } from 'react'
 import { assoc, dissoc, mapObjIndexed, values } from 'ramda'
 import { Button, IconButton } from 'react-toolbox/lib/button'
@@ -7,12 +9,18 @@ import { list, listItemInput } from './InputList.scss'
 
 class InputList extends Component {
 
+  itemsCount: number
+
+  state: {
+    items: Array<any>
+  }
+
   static propTypes = {
     items: PropTypes.arrayOf(PropTypes.string).isRequired,
     onChange: PropTypes.func.isRequired
   }
 
-  constructor(props) {
+  constructor(props: any) {
     super(props)
     this.itemsCount = props.items.length
     const items = props.items.reduce((acc, value, index) => (acc[index + 1] = value, acc), {})
@@ -25,7 +33,7 @@ class InputList extends Component {
     this.props.onChange(values(this.state.items))
   }
 
-  handleFieldChange = id => value => {
+  handleFieldChange = (id: number) => (value: string) => {
     const items = assoc(id, value)
     this.setState(
       state => assoc('items', items(state.items), state),
@@ -40,14 +48,14 @@ class InputList extends Component {
     )
   }
 
-  handleFieldRemove = id => () => {
+  handleFieldRemove = (id: number) => () => {
     this.setState(
       state => assoc('items', dissoc(id, state.items), state),
       this.emitChange
     )
   }
 
-  renderItem = (value, key) => {
+  renderItem = (value: string, key: number) => {
     return (
       <li key={key}>
         <Input className={listItemInput} value={value} onChange={this.handleFieldChange(key)} />

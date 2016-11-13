@@ -18,7 +18,7 @@ export function requireAuthentication(WrappedComponent: Component<any, any, any>
 
     checkAuth (isAuthenticated) {
       if (!isAuthenticated) {
-        const redirectAfterLogin = this.props.location.pathname
+        // const redirectAfterLogin = this.props.location.pathname
         this.props.displayNotification('You need to be logged in.')
         this.props.router.push('/login')
       }
