@@ -1,4 +1,4 @@
-import { apiGet, apiPost } from './utils'
+import { apiGet } from './utils'
 import { API_URL } from './config'
 
 export const getEvent = id => apiGet('event/' + id)
@@ -7,11 +7,6 @@ export const getEvents = () => apiGet('event')
 
 export const createEvent = event => {
   const user = JSON.parse(localStorage.getItem('user')) || {}
-
-  const eventData = {
-    ...event,
-    UserId: user.id
-  }
 
   const formData = new FormData()
 
@@ -43,6 +38,4 @@ export const createEvent = event => {
     throw error
   })
   .then(x => x.json())
-
-  return apiPost('event', eventData)
 }

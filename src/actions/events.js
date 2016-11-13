@@ -4,7 +4,10 @@ import {
   FETCH_EVENTS_FAILURE,
   ADD_EVENT,
   ADD_EVENT_SUCCESS,
-  ADD_EVENT_FAILURE
+  ADD_EVENT_FAILURE,
+  FETCH_EVENT_DETAILS_REQUEST,
+  FETCH_EVENT_DETAILS_SUCCESS,
+  FETCH_EVENT_DETAILS_FAILURE
 } from '../constants/events'
 
 export function fetchEventsRequest () {
@@ -44,6 +47,27 @@ export function addEventSuccess (event) {
 export function addEventFailure (error) {
   return {
     type: ADD_EVENT_FAILURE,
+    error
+  }
+}
+
+export function fetchEventDetailsReqeust (eventId) {
+  return {
+    type: FETCH_EVENT_DETAILS_REQUEST,
+    eventId
+  }
+}
+
+export function fetchEventDetailsSuccess (eventDetails) {
+  return {
+    type: FETCH_EVENT_DETAILS_SUCCESS,
+    eventDetails
+  }
+}
+
+export function fetchEventDetailsFailure (error) {
+  return {
+    type: FETCH_EVENT_DETAILS_FAILURE,
     error
   }
 }

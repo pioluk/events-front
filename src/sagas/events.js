@@ -1,7 +1,7 @@
 import { call, take, put } from 'redux-saga/effects'
-import { FETCH_EVENTS_REQUEST, ADD_EVENT } from '../constants/events'
+import { FETCH_EVENTS_REQUEST, FETCH_EVENT_DETAILS_REQUEST, ADD_EVENT } from '../constants/events'
 import * as actionCreators from '../actions/events'
-import { getEvents, createEvent } from '../api/events'
+import { getEvent, getEvents, createEvent } from '../api/events'
 
 export function* getEventsFlow () {
   while (true) {
@@ -14,6 +14,21 @@ export function* getEventsFlow () {
     }
     catch (err) {
       yield put(actionCreators.fetchEventsFailure(err))
+    }
+  }
+}
+
+export function* getEventDetailsFlow () {
+  while (true) {
+    const { eventId } = yield take(FETCH_EVENT_DETAILS_REQUEST)
+    try {
+      const eventDetails = yield call(getEvent, eventId)
+      if (eventDetails) {
+        yield put(actionCreators.fetchEventDetailsSuccess(eventDetails))
+      }
+    }
+    catch (err) {
+      yield put(actionCreators.fetchEventDetailsFailure(err))
     }
   }
 }
