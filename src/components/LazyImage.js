@@ -7,8 +7,10 @@ export default class LazyImage extends Component {
     color: PropTypes.string,
     small: PropTypes.string,
     image: PropTypes.string.isRequired,
-    width: PropTypes.number,
-    height: PropTypes.number.isRequired,
+    width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+    style: PropTypes.object,
+    keepAspect: PropTypes.bool
   }
 
   constructor() {
@@ -34,11 +36,11 @@ export default class LazyImage extends Component {
   }
 
   render() {
-    const { alt, color, small, image, width, height } = this.props
+    const { alt, color, small, style, keepAspect, image, width, height } = this.props
 
     const imageVisible = !!this.state.largeImage
 
-    const placeholderStyle = {
+    const placeholderStyle = Object.assign({
       width,
       height,
       backgroundColor: color,
@@ -48,15 +50,17 @@ export default class LazyImage extends Component {
       backgroundSize: 'cover',
       margin: 0,
       overflow: 'hidden',
-      position: 'relative'
-    }
+      position: 'relative',
+      zIndex: -1
+    }, style || {})
 
     const imageStyle = {
       opacity: imageVisible ? 1 : 0,
       top: 0,
       left: 0,
       transition: 'opacity 750ms linear',
-      height: '100%'
+      height: keepAspect ? '100%' : 'auto',
+      width: keepAspect ? 'auto' : '100%'
     }
 
     return (
