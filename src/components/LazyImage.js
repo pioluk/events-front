@@ -6,32 +6,55 @@ export default class LazyImage extends Component {
     alt: PropTypes.string,
     color: PropTypes.string,
     small: PropTypes.string,
-    image: PropTypes.string.isRequired,
+    image: PropTypes.string,
     width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
     style: PropTypes.object,
     keepAspect: PropTypes.bool
   }
 
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       largeImage: null
     }
     this.timeout = null
   }
 
-  componentWillMount() {
+  loadLargeImage = (image) => {
     const largeImage = new Image()
     largeImage.onload = () => {
-      this.setState({ largeImage })
+      this.timeout = setTimeout(() => {
+        this.setState({ largeImage })
+      })
     }
-    largeImage.src = this.props.image
+    largeImage.src = image
+    // fetch(image)
+    //   .then(res => res.blob())
+    //   .then(blob => URL.createObjectURL(blob))
+    //   .then(objectUrl => {
+    //     this.timeout = setTimeout(() => {
+    //       this.setState({ largeImage: objectUrl })
+    //     })
+    //   })
+  }
+
+  componentWillMount() {
+    const image = this.props.image
+    if (typeof image === 'string' && image !== '') {
+      this.loadLargeImage(image)
+    }
   }
 
   componentWillUnmount() {
     if (typeof this.timeout === 'number') {
       clearTimeout(this.timeout)
+    }
+  }
+
+  componentWillReceiveProps(props) {
+    if (typeof props.image === 'string' && props.image !== '') {
+      this.loadLargeImage(props.image)
     }
   }
 
