@@ -48,10 +48,9 @@ class HomeView extends Component {
           style={styles.gridList}>
           {events.map(event =>
             <GridTile
-              key={event.id}
               title={
                 <Link
-                  style={{ color: 'inherit', textDecoration: 'none' }}
+                  style={{ color: 'inherit', textDecoration: 'none', cursor: 'pointer' }}
                   onClick={() => this.navigateToEvent(event)}>
                   {event.title}
                 </Link>

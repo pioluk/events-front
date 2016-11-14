@@ -23,7 +23,6 @@ class Header extends Component {
 
   componentDidMount() {
     window.appbar = this.node = document.querySelector('[data-react-toolbox="app-bar"]')
-    console.log('componentDidMount', !!this.node)
   }
 
   navigateToLogin = () => {
@@ -57,12 +56,12 @@ class Header extends Component {
           <LazyImage
             keepAspect={false}
             width="100%"
-            height={220}
+            height={320}
             color={this.props.color}
-            small={'data:image/jpeg;base64,' + this.props.thumbnail}
+            small={this.props.thumbnail}
             image={this.props.image}
-            style={{position: 'fixed', top: 0, left: 0}} />
-          }
+            style={{position: 'absolute', top: 0, left: 0}} />
+        }
         <AppMenu
           opened={this.state.menuOpened}
           onRequestChange={this.handleMenuToggle} />
@@ -81,8 +80,8 @@ const mapStateToProps = state => {
   return {
     isEventDetails,
     isAuthenticated: state.auth.isAuthenticated,
-    color: ui.selectedEventColor,
-    thumbnail: ui.selectedEventThumbnail,
+    color: ui.selectedEventColor || '#1976d2',
+    thumbnail: !!ui.selectedEventThumbnail && ('data:image/jpeg;base64,' + ui.selectedEventThumbnail),
     image: ui.selectedEventImage
   }
 }

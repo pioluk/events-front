@@ -1,14 +1,15 @@
 /* @flow */
 
 type UiState = {
-  selectedEventColor: string,
-  selectedEventThumbnail: string
+  selectedEventColor: ?string,
+  selectedEventThumbnail: ?string,
+  selectedEventImage: ?string
 }
 
 const initialState: UiState = {
-  selectedEventColor: '',
-  selectedEventThumbnail: '',
-  selectedEventImage: ''
+  selectedEventColor: null,
+  selectedEventThumbnail: null,
+  selectedEventImage: null
 }
 
 export default function uiReducer (state: UiState = initialState, action: any): UiState {

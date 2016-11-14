@@ -1,0 +1,19 @@
+.card {
+  margin-top: 180px;
+  width: 880px;
+  height: 150vh; /* TODO: remove */
+  margin: 0 auto;
+  padding: 3em 2em 2em 3em;
+  border-radius: 0.1rem;
+}
+
+@media (max-width: 950px) {
+  .card {
+    width: 600px;
+  }
+}
+
+.progressBar {
+  display: block;
+  margin: 180px auto;
+}
