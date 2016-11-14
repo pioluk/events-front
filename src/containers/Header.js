@@ -39,7 +39,7 @@ class Header extends Component {
     const { isAuthenticated, isEventDetails } = this.props
 
     if (isEventDetails && this.node !== null) {
-      this.node.style.background = 'none'
+      this.node.style.background = 'rgba(0, 0, 0, 0.2)'
     } else if (this.node !== null) {
       this.node.style.background = null
     }
