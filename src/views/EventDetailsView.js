@@ -6,7 +6,7 @@ import Card from 'react-toolbox/lib/card'
 import ProgressBar from 'react-toolbox/lib/progress_bar'
 import * as actionCreators from '../actions/events'
 
-import { eventWrapper, card, progressBar } from './EventDetailsView.scss'
+import { card, progressBar } from './EventDetailsView.scss'
 
 class EventDetailsView extends Component {
 
