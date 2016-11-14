@@ -1,0 +1,23 @@
+@import "~react-toolbox/lib/colors";
+
+.root {
+  position: relative;
+  margin-bottom: 24px;
+  padding-left: 40px;
+  font-size: 16px;
+}
+
+.title {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 13px;
+  color: $palette-grey-500;
+}
+
+.fontIcon {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 28px;
+  color: $palette-grey-500;
+}
