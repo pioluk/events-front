@@ -1,0 +1,9 @@
+exports[`Error component should have correct styles and structure 1`] = `
+<div
+  style={
+    Object {
+      "color": "rgb(244, 67, 54)",
+      "fontSize": 12,
+    }
+  } />
+`;
