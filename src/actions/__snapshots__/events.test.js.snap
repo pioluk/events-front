@@ -1,4 +1,4 @@
-exports[`events actions it should create an action to add a new event 1`] = `
+exports[`events actions should create an action to add a new event 1`] = `
 Object {
   "event": Object {
     "UserId": 1,
@@ -15,41 +15,41 @@ Object {
 }
 `;
 
-exports[`events actions it should create an action to fetch event's details 1`] = `
+exports[`events actions should create an action to fetch event's details 1`] = `
 Object {
   "eventId": 1,
   "type": "FETCH_EVENT_DETAILS_REQUEST",
 }
 `;
 
-exports[`events actions it should create an action to fetch events 1`] = `
+exports[`events actions should create an action to fetch events 1`] = `
 Object {
   "type": "FETCH_EVENTS_REQUEST",
 }
 `;
 
-exports[`events actions it should create an action to indicate an event creation error 1`] = `
+exports[`events actions should create an action to indicate an event creation error 1`] = `
 Object {
   "error": [Error: Event creation error.],
   "type": "ADD_EVENT_FAILURE",
 }
 `;
 
-exports[`events actions it should create an action to indicate event fetching error 1`] = `
+exports[`events actions should create an action to indicate event fetching error 1`] = `
 Object {
   "error": [Error: Error fetching error],
   "type": "FETCH_EVENTS_FAILURE",
 }
 `;
 
-exports[`events actions it should create an action to indicate event's details fetching error 1`] = `
+exports[`events actions should create an action to indicate event's details fetching error 1`] = `
 Object {
   "error": [Error: Event details fetching failed.],
   "type": "FETCH_EVENT_DETAILS_FAILURE",
 }
 `;
 
-exports[`events actions it should create an action to pass event details 1`] = `
+exports[`events actions should create an action to pass event details 1`] = `
 Object {
   "eventDetails": Object {
     "UserId": 1,
@@ -66,7 +66,7 @@ Object {
 }
 `;
 
-exports[`events actions it should create an action to request creation of a new event 1`] = `
+exports[`events actions should create an action to request creation of a new event 1`] = `
 Object {
   "event": Object {
     "UserId": 1,
@@ -83,7 +83,7 @@ Object {
 }
 `;
 
-exports[`events actions it should create an action to send fetched events 1`] = `
+exports[`events actions should create an action to send fetched events 1`] = `
 Object {
   "events": Array [
     Object {
@@ -93,7 +93,7 @@ Object {
       "dateEnd": "2016-12-06T02:03:56.063Z",
       "dateStart": "2016-05-23T17:38:11.010Z",
       "description": "Ut ut ipsam. Hic voluptas illo ex voluptatibus dolores aut sed beatae vel. Quo fuga cum animi est voluptatem. Animi numquam magni. Ut labore deleniti tenetur nulla magnam maxime enim. Molestiae omnis harum id sequi accusantium tempora. Tempore est dolorem nesciunt voluptatem quaerat qui dolorum non. Praesentium perferendis ut.",
-      "id": 3,
+      "id": 1,
       "title": "nihil voluptas rerum",
       "updatedAt": "2016-10-26T07:06:39.152Z",
     },
@@ -104,7 +104,7 @@ Object {
       "dateEnd": "2017-08-27T03:37:53.566Z",
       "dateStart": "2016-07-04T18:33:59.969Z",
       "description": "Sequi sit minima quae totam dolores suscipit. Vero exercitationem repellendus velit. Earum ullam unde explicabo earum. Corporis architecto ab quisquam consectetur. Odio odit aliquid ex sint consequatur similique. Aut et occaecati saepe rem cupiditate et veritatis aut. Similique molestias eveniet libero labore est laboriosam. Molestiae reiciendis error neque dignissimos.",
-      "id": 4,
+      "id": 2,
       "title": "voluptatem eos nostrum",
       "updatedAt": "2016-10-26T07:06:40.243Z",
     },

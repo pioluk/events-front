@@ -1,16 +1,16 @@
-// global describe,test,expect
+// global describe,it,expect
 
 import * as actions from './events'
 
 describe('events actions', () => {
-  test('it should create an action to fetch events', () => {
+  it('should create an action to fetch events', () => {
     expect(actions.fetchEventsRequest()).toMatchSnapshot()
   })
 
-  test('it should create an action to send fetched events', () => {
+  it('should create an action to send fetched events', () => {
     const events = [
       {
-        "id": 3,
+        "id": 1,
         "UserId": 1,
         "title": "nihil voluptas rerum",
         "description": "Ut ut ipsam. Hic voluptas illo ex voluptatibus dolores aut sed beatae vel. Quo fuga cum animi est voluptatem. Animi numquam magni. Ut labore deleniti tenetur nulla magnam maxime enim. Molestiae omnis harum id sequi accusantium tempora. Tempore est dolorem nesciunt voluptatem quaerat qui dolorum non. Praesentium perferendis ut.",
@@ -21,7 +21,7 @@ describe('events actions', () => {
         "updatedAt": "2016-10-26T07:06:39.152Z"
       },
       {
-        "id": 4,
+        "id": 2,
         "UserId": 1,
         "title": "voluptatem eos nostrum",
         "description": "Sequi sit minima quae totam dolores suscipit. Vero exercitationem repellendus velit. Earum ullam unde explicabo earum. Corporis architecto ab quisquam consectetur. Odio odit aliquid ex sint consequatur similique. Aut et occaecati saepe rem cupiditate et veritatis aut. Similique molestias eveniet libero labore est laboriosam. Molestiae reiciendis error neque dignissimos.",
@@ -35,12 +35,12 @@ describe('events actions', () => {
     expect(actions.fetchEventsSuccess(events)).toMatchSnapshot()
   })
 
-  test('it should create an action to indicate event fetching error', () => {
+  it('should create an action to indicate event fetching error', () => {
     const error = new Error('Error fetching error')
     expect(actions.fetchEventsFailure(error)).toMatchSnapshot()
   })
 
-  test('it should create an action to request creation of a new event', () => {
+  it('should create an action to request creation of a new event', () => {
     const event = {
       "id": 1,
       "UserId": 1,
@@ -55,7 +55,7 @@ describe('events actions', () => {
     expect(actions.addEvent(event)).toMatchSnapshot()
   })
 
-  test('it should create an action to add a new event', () => {
+  it('should create an action to add a new event', () => {
     const event = {
       "id": 1,
       "UserId": 1,
@@ -70,17 +70,17 @@ describe('events actions', () => {
     expect(actions.addEventSuccess(event)).toMatchSnapshot()
   })
 
-  test('it should create an action to indicate an event creation error', () => {
+  it('should create an action to indicate an event creation error', () => {
     const error = new Error('Event creation error.')
     expect(actions.addEventFailure(error)).toMatchSnapshot()
   })
 
-  test('it should create an action to fetch event\'s details', () => {
+  it('should create an action to fetch event\'s details', () => {
     const eventId = 1
     expect(actions.fetchEventDetailsReqeust(eventId)).toMatchSnapshot()
   })
 
-  test('it should create an action to pass event details', () => {
+  it('should create an action to pass event details', () => {
     const eventDetails = {
       "id": 1,
       "UserId": 1,
@@ -95,7 +95,7 @@ describe('events actions', () => {
     expect(actions.fetchEventDetailsSuccess(eventDetails)).toMatchSnapshot()
   })
 
-  test('it should create an action to indicate event\'s details fetching error', () => {
+  it('should create an action to indicate event\'s details fetching error', () => {
     const error = new Error('Event details fetching failed.')
     expect(actions.fetchEventDetailsFailure(error)).toMatchSnapshot()
   })

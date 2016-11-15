@@ -1,4 +1,4 @@
-exports[`ui actions it should create an action to select an event 1`] = `
+exports[`ui actions should create an action to select an event 1`] = `
 Object {
   "color": "red",
   "image": "http://example.com/image.png",
