@@ -7,7 +7,6 @@ const CommentForm = ({ onSubmit }) => (
     <div>
       <Input
         multiline
-        className
         hint="Comment" />
       <IconButton
         type="submit"
