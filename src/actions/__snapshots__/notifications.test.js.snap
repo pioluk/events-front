@@ -1,0 +1,6 @@
+exports[`notifications actions it should create action to display a notifications 1`] = `
+Object {
+  "message": "Successfully logged in.",
+  "type": "DISPLAY_NOTIFICATION",
+}
+`;

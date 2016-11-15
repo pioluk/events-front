@@ -1,0 +1,28 @@
+exports[`auth actions it should create an action to indicate login failure 1`] = `
+Object {
+  "error": [Error: Login failure],
+  "type": "LOGIN_FAILURE",
+}
+`;
+
+exports[`auth actions it should create an action to indicate login success 1`] = `
+Object {
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ",
+  "type": "LOGIN_SUCCESS",
+  "user": "admin",
+}
+`;
+
+exports[`auth actions it should create an action to logout 1`] = `
+Object {
+  "type": "LOGOUT",
+}
+`;
+
+exports[`auth actions it should create an action to send a login request 1`] = `
+Object {
+  "password": "admin1",
+  "type": "LOGIN_REQUEST",
+  "username": "admin",
+}
+`;

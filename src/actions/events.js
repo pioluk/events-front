@@ -1,3 +1,5 @@
+// @flow
+
 import {
   FETCH_EVENTS_REQUEST,
   FETCH_EVENTS_SUCCESS,
@@ -16,7 +18,7 @@ export function fetchEventsRequest () {
   }
 }
 
-export function fetchEventsSuccess (events) {
+export function fetchEventsSuccess (events: Array<any>) {
   return {
     type: FETCH_EVENTS_SUCCESS,
     events
@@ -37,7 +39,7 @@ export function addEvent (event) {
   }
 }
 
-export function addEventSuccess (event) {
+export function addEventSuccess (event: any) {
   return {
     type: ADD_EVENT_SUCCESS,
     event
@@ -51,14 +53,14 @@ export function addEventFailure (error) {
   }
 }
 
-export function fetchEventDetailsReqeust (eventId) {
+export function fetchEventDetailsReqeust (eventId: number) {
   return {
     type: FETCH_EVENT_DETAILS_REQUEST,
     eventId
   }
 }
 
-export function fetchEventDetailsSuccess (eventDetails) {
+export function fetchEventDetailsSuccess (eventDetails: any) {
   return {
     type: FETCH_EVENT_DETAILS_SUCCESS,
     eventDetails
