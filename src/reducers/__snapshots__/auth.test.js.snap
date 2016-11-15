@@ -1,0 +1,49 @@
+exports[`auth reducer should handle LOGIN_FAILURE 1`] = `
+Object {
+  "errorMessage": "Login failure.",
+  "isAuthenticated": false,
+  "isAuthenticating": false,
+  "token": null,
+  "user": null,
+}
+`;
+
+exports[`auth reducer should handle LOGIN_REQUEST 1`] = `
+Object {
+  "errorMessage": null,
+  "isAuthenticated": false,
+  "isAuthenticating": true,
+  "token": null,
+  "user": null,
+}
+`;
+
+exports[`auth reducer should handle LOGIN_SUCCESS 1`] = `
+Object {
+  "errorMessage": null,
+  "isAuthenticated": true,
+  "isAuthenticating": false,
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ",
+  "user": "admin",
+}
+`;
+
+exports[`auth reducer should handle LOGOUT 1`] = `
+Object {
+  "errorMessage": null,
+  "isAuthenticated": false,
+  "isAuthenticating": false,
+  "token": null,
+  "user": null,
+}
+`;
+
+exports[`auth reducer should return the initial state 1`] = `
+Object {
+  "errorMessage": null,
+  "isAuthenticated": false,
+  "isAuthenticating": false,
+  "token": null,
+  "user": null,
+}
+`;

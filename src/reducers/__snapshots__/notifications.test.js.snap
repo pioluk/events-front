@@ -1,0 +1,13 @@
+exports[`notifications reducer should handle DISPLAY_NOTIFICATION 1`] = `
+Object {
+  "id": 1,
+  "message": "Successfully logged in.",
+}
+`;
+
+exports[`notifications reducer should return the initial state 1`] = `
+Object {
+  "id": "",
+  "message": "",
+}
+`;
