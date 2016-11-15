@@ -2,10 +2,11 @@
 
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import fecha from 'fecha'
 import Card from 'react-toolbox/lib/card'
 import ProgressBar from 'react-toolbox/lib/progress_bar'
+import IconLabel from '../components/IconLabel'
 import * as actionCreators from '../actions/events'
-
 import { card, progressBar } from './EventDetailsView.scss'
 
 class EventDetailsView extends Component {
@@ -31,10 +32,23 @@ class EventDetailsView extends Component {
     }
   }
 
+  renderDate = (date: string) => {
+    return fecha.format(new Date(date), 'MMM D, YYYY HH:mm')
+  }
+
   renderEvent = (event: any) => {
     return (
       <div>
         <h3>{event.title}</h3>
+        <div style={{ display: 'flex', marginTop: 15, marginBottom: 15 }}>
+          <div style={{ flex: 1 }}>
+            <IconLabel title="From" icon="schedule">{this.renderDate(event.dateStart)}</IconLabel>
+          </div>
+          <div style={{ flex: 1 }}>
+            <IconLabel title="To" icon="schedule">{this.renderDate(event.dateEnd)}</IconLabel>
+          </div>
+        </div>
+        <div>{event.description}</div>
       </div>
     )
   }
