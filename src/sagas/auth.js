@@ -11,11 +11,13 @@ export function* loginFlow () {
     try {
       const { user, token } = yield call(login, username, password);
       if (user && token) {
-        localStorage.setItem('user', JSON.stringify(user));
-        localStorage.setItem('token', token);
+        if ('localStorage' in window) {
+          localStorage.setItem('user', JSON.stringify(user));
+          localStorage.setItem('token', token);
+          browserHistory.push('/');
+        }
         yield put(authActions.loginSuccess(user, token));
         yield put(notificationActions.displayNotification('Successfully logged in.'))
-        browserHistory.push('/');
       }
     }
     catch (err) {
