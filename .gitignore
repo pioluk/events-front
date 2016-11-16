@@ -1,7 +1,5 @@
 flow-typed/
 
-yarn.lock
-
 build/
 
 # Created by https://www.gitignore.io/api/node
