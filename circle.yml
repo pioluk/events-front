@@ -12,7 +12,6 @@ machine:
     version: 7.2
 dependencies:
   pre:
-    pre:
     - |
       if [[ ! -e ~/.yarn/bin/yarn || $(yarn --version) != "${YARN_VERSION}" ]]; then
         echo "Download and install Yarn."
