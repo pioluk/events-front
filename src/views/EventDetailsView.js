@@ -8,6 +8,8 @@ import ProgressBar from 'react-toolbox/lib/progress_bar'
 import IconLabel from '../components/IconLabel'
 import * as actionCreators from '../actions/events'
 import { card, progressBar } from './EventDetailsView.scss'
+import MapPreview from '../components/MapPreview'
+import Comments from '../components/Comments'
 
 class EventDetailsView extends Component {
 
@@ -49,6 +51,7 @@ class EventDetailsView extends Component {
           </div>
         </div>
         <div>{event.description}</div>
+        <Comments />
       </div>
     )
   }

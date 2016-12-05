@@ -85,7 +85,7 @@ const EventForm = ({ formData, onChange, onSubmit, errors = {} }) =>
       <ImageUpload
         onSelect={R.compose(onChange('image'), getSecondArg)} />
 
-      <LocationChooser />
+      <LocationChooser onChange={onChange('location')} />
 
       <div>
         <h4>Emails</h4>

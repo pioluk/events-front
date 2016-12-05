@@ -39,8 +39,7 @@ const LocationChooser = withGoogleMap(props => (
       controlPosition={google.maps.ControlPosition.TOP_LEFT}
       onPlacesChanged={props.onPlacesChanged}
       inputPlaceholder="Search Location"
-      inputStyle={INPUT_STYLE}
-    />
+      inputStyle={INPUT_STYLE} />
     {props.marker && (
       <Marker position={props.marker.position} />
     )}
@@ -56,17 +55,21 @@ export default class LocationChooserWrapper extends Component {
       lng: -122.3212725,
     },
     marker: null,
+    name: '',
+    placeId: ''
   }
 
   map = null
   searchBox = null
+  geocoder = new google.maps.Geocoder()
 
   emitChange = () => {
+    const { name, placeId } = this.state
     const position = this.state.marker.position
     const lat = position.lat()
     const lng = position.lng()
     typeof this.props.onChange === 'function'
-      && this.props.onChange({ lat, lng })
+      && this.props.onChange({ name, lat, lng, placeId })
   }
 
   handleMapMounted = (map: any) => {
@@ -95,18 +98,27 @@ export default class LocationChooserWrapper extends Component {
       this.setState({
         center: mapCenter,
         marker,
-      })
+      }, this.emitChange)
+      this.fetchLocationName(position)
     }
 
   }
 
   handleMapClick = (e: any) => {
     const position = e.latLng
-    console.log('position', position.toString())
-    this.setState({ marker: { position } })
+    this.setState({ marker: { position } }, this.emitChange)
+    this.fetchLocationName(position)
+  }
 
-    new google.maps.Geocoder().geocode({ location: position }, (results, status) => {
-      console.log(status, results)
+  fetchLocationName = (position) => {
+    this.geocoder.geocode({ location: position }, (results, status) => {
+      console.log(results)
+      if (status === 'OK' && results.length > 0) {
+        const first = results[0]
+        this.setState({ name: first.formatted_address, placeId: first.place_id }, this.emitChange)
+      } else {
+        console.error('Location could not be identified')
+      }
     })
   }
 
