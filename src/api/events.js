@@ -23,6 +23,13 @@ export const createEvent = event => {
   formData.append('dateEnd', endDate + 'T' + endTime)
   formData.append('color', event.color)
   formData.append('image', event.image)
+  formData.append('emails', event.emails)
+  formData.append('phones', event.phones)
+  formData.append('websites', event.websites)
+  formData.append('location.name', event.location.name)
+  formData.append('location.lat', event.location.lat)
+  formData.append('location.lng', event.location.lng)
+  formData.append('location.placeId', event.location.placeId)
 
   return fetch(`${API_URL}/event`, {
     method: 'POST',
