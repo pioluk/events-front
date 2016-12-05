@@ -28,3 +28,8 @@ dependencies:
 test:
   override:
     - yarn test
+deployment:
+  hub:
+    branch: master
+    commands:
+      - ./deploy.sh
