@@ -1,0 +1,116 @@
+exports[`comments actions should create an action representing a comment to add 1`] = `
+Object {
+  "comment": Object {
+    "EventId": 1,
+    "UserId": 1,
+    "createdAt": "2016-12-03T12:00:00.000Z",
+    "deletedAt": null,
+    "id": 1,
+    "text": "Lorem ipsum",
+    "updatedAt": "2016-12-03T12:00:00.000Z",
+    "user": Object {
+      "createdAt": "2016-12-01T13:02:38.213Z",
+      "email": "181423@edu.p.lodz.pl",
+      "id": 1,
+      "imageAvatar": null,
+      "updatedAt": "2016-12-01T13:02:38.213Z",
+      "username": "pioluk",
+    },
+  },
+  "type": "ADD_COMMENT_SUCCESS",
+}
+`;
+
+exports[`comments actions should create an action representing a comment to remove 1`] = `
+Object {
+  "id": 1,
+  "type": "REMOVE_COMMENT_SUCCESS",
+}
+`;
+
+exports[`comments actions should create an action representing a request to remove a comment 1`] = `
+Object {
+  "id": 1,
+  "type": "REMOVE_COMMENT",
+}
+`;
+
+exports[`comments actions should create an action representing comment adding error 1`] = `
+Object {
+  "error": [Error: Comment adding failed],
+  "type": "ADD_COMMENT_FAILURE",
+}
+`;
+
+exports[`comments actions should create an action representing comment removal erorr 1`] = `
+Object {
+  "error": [Error: Comment removing failed],
+  "type": "REMOVE_COMMENT_FAILURE",
+}
+`;
+
+exports[`comments actions should create an action representing text to create comment 1`] = `
+Object {
+  "text": "Comment #1",
+  "type": "ADD_COMMENT",
+}
+`;
+
+exports[`comments actions should create an action to fetch comments 1`] = `
+Object {
+  "eventId": 1,
+  "limit": 20,
+  "offset": 0,
+  "type": "FETCH_COMMENTS",
+}
+`;
+
+exports[`comments actions should create an action to indicate comment fetching error 1`] = `
+Object {
+  "error": [Error: Error fetching comments],
+  "type": "FETCH_COMMENTS_FAILURE",
+}
+`;
+
+exports[`comments actions should create an action to send fetched comments 1`] = `
+Object {
+  "comments": Array [
+    Object {
+      "EventId": 1,
+      "UserId": 1,
+      "createdAt": "2016-12-03T12:00:00.000Z",
+      "deletedAt": null,
+      "id": 1,
+      "text": "Lorem ipsum",
+      "updatedAt": "2016-12-03T12:00:00.000Z",
+      "user": Object {
+        "createdAt": "2016-12-01T13:02:38.213Z",
+        "email": "181423@edu.p.lodz.pl",
+        "id": 1,
+        "imageAvatar": null,
+        "updatedAt": "2016-12-01T13:02:38.213Z",
+        "username": "pioluk",
+      },
+    },
+    Object {
+      "EventId": 1,
+      "UserId": 1,
+      "createdAt": "2016-12-03T12:30:00.000Z",
+      "deletedAt": null,
+      "id": 2,
+      "text": "Dolor Amet",
+      "updatedAt": "2016-12-03T12:30:00.000Z",
+      "user": Object {
+        "createdAt": "2016-12-01T13:02:38.213Z",
+        "email": "181423@edu.p.lodz.pl",
+        "id": 1,
+        "imageAvatar": null,
+        "updatedAt": "2016-12-01T13:02:38.213Z",
+        "username": "pioluk",
+      },
+    },
+  ],
+  "count": 2,
+  "type": "FETCH_COMMENTS_SUCCESS",
+}
+`;

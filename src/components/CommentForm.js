@@ -5,7 +5,7 @@ import Input from 'react-toolbox/lib/input'
 import { wrapper, input } from './CommentForm.scss'
 
 const CommentForm = ({ onSubmit }) => (
-  <form onSubmit={ e => { e.preventDefault(); onSubmit(e) } }>
+  <form onSubmit={onSubmit}>
     <div className={wrapper}>
       <Input
         className={input}

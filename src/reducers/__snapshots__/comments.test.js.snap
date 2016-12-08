@@ -1,0 +1,159 @@
+exports[`comments reducer should handle ADD_COMMENT 1`] = `
+Object {
+  "comments": Array [],
+  "count": 0,
+  "error": null,
+  "isLoading": false,
+}
+`;
+
+exports[`comments reducer should handle ADD_COMMENT_FAILURE 1`] = `
+Object {
+  "comments": Array [],
+  "count": 0,
+  "error": [Error: Error adding comment],
+  "isLoading": false,
+}
+`;
+
+exports[`comments reducer should handle ADD_COMMENT_SUCCESS 1`] = `
+Object {
+  "comments": Array [
+    Object {
+      "EventId": 1,
+      "UserId": 1,
+      "createdAt": "2016-12-03T12:00:00.000Z",
+      "deletedAt": null,
+      "id": 1,
+      "text": "Lorem ipsum",
+      "updatedAt": "2016-12-03T12:00:00.000Z",
+      "user": Object {
+        "createdAt": "2016-12-01T13:02:38.213Z",
+        "email": "181423@edu.p.lodz.pl",
+        "id": 1,
+        "imageAvatar": null,
+        "updatedAt": "2016-12-01T13:02:38.213Z",
+        "username": "pioluk",
+      },
+    },
+  ],
+  "count": 0,
+  "error": null,
+  "isLoading": false,
+}
+`;
+
+exports[`comments reducer should handle FETCH_COMMENTS 1`] = `
+Object {
+  "comments": Array [],
+  "count": 0,
+  "error": null,
+  "isLoading": true,
+}
+`;
+
+exports[`comments reducer should handle FETCH_COMMENTS_FAILURE 1`] = `
+Object {
+  "comments": Array [],
+  "count": 0,
+  "error": [Error: Error fetching comments],
+  "isLoading": false,
+}
+`;
+
+exports[`comments reducer should handle FETCH_COMMENTS_SUCCESS 1`] = `
+Object {
+  "comments": undefined,
+  "count": Array [
+    Object {
+      "EventId": 1,
+      "UserId": 1,
+      "createdAt": "2016-12-03T12:00:00.000Z",
+      "deletedAt": null,
+      "id": 1,
+      "text": "Lorem ipsum",
+      "updatedAt": "2016-12-03T12:00:00.000Z",
+      "user": Object {
+        "createdAt": "2016-12-01T13:02:38.213Z",
+        "email": "181423@edu.p.lodz.pl",
+        "id": 1,
+        "imageAvatar": null,
+        "updatedAt": "2016-12-01T13:02:38.213Z",
+        "username": "pioluk",
+      },
+    },
+    Object {
+      "EventId": 1,
+      "UserId": 1,
+      "createdAt": "2016-12-03T12:30:00.000Z",
+      "deletedAt": null,
+      "id": 2,
+      "text": "Dolor Amet",
+      "updatedAt": "2016-12-03T12:30:00.000Z",
+      "user": Object {
+        "createdAt": "2016-12-01T13:02:38.213Z",
+        "email": "181423@edu.p.lodz.pl",
+        "id": 1,
+        "imageAvatar": null,
+        "updatedAt": "2016-12-01T13:02:38.213Z",
+        "username": "pioluk",
+      },
+    },
+  ],
+  "error": null,
+  "isLoading": false,
+}
+`;
+
+exports[`comments reducer should handle REMOVE_COMMENT 1`] = `
+Object {
+  "comments": Array [],
+  "count": 0,
+  "error": null,
+  "isLoading": false,
+}
+`;
+
+exports[`comments reducer should handle REMOVE_COMMENT_FAILURE 1`] = `
+Object {
+  "comments": Array [],
+  "count": 0,
+  "error": [Error: Error removing comment],
+  "isLoading": false,
+}
+`;
+
+exports[`comments reducer should handle REMOVE_COMMENT_SUCCESS 1`] = `
+Object {
+  "comments": Array [
+    Object {
+      "EventId": 1,
+      "UserId": 1,
+      "createdAt": "2016-12-03T12:30:00.000Z",
+      "deletedAt": null,
+      "id": 2,
+      "text": "Dolor Amet",
+      "updatedAt": "2016-12-03T12:30:00.000Z",
+      "user": Object {
+        "createdAt": "2016-12-01T13:02:38.213Z",
+        "email": "181423@edu.p.lodz.pl",
+        "id": 1,
+        "imageAvatar": null,
+        "updatedAt": "2016-12-01T13:02:38.213Z",
+        "username": "pioluk",
+      },
+    },
+  ],
+  "error": null,
+  "isLoading": false,
+}
+`;
+
+exports[`comments reducer should return the initial state 1`] = `
+Object {
+  "comments": Array [],
+  "count": 0,
+  "error": null,
+  "isLoading": false,
+}
+`;
