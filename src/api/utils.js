@@ -28,3 +28,13 @@ export const apiPost = (url: string, body: any) =>
   })
   .then(checkStatus)
   .then(parseJSON)
+
+export const apiDelete = (url: string) =>
+  fetch(`${API_URL}/${url}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(checkStatus)
+  .then(parseJSON)
