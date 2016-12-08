@@ -1,6 +1,6 @@
 import { loginFlow } from './auth'
 import { getEventsFlow, getEventDetailsFlow, createEventFlow } from './events'
-import { getCommentsFlow, addCommentFlow, removeCommentFlow } from './comments'
+import { getCommentsFlow, createCommentFlow, removeCommentFlow } from './comments'
 
 export default function* rootSaga () {
   yield [
@@ -9,7 +9,7 @@ export default function* rootSaga () {
     getEventDetailsFlow(),
     createEventFlow(),
     getCommentsFlow(),
-    addCommentFlow(),
+    createCommentFlow(),
     removeCommentFlow()
   ]
 }
