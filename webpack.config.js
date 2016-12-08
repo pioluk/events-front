@@ -6,7 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   context: __dirname,
-  devtool: 'source-map',
+  // devtool: 'source-map',
   entry: [
     require.resolve('./config/polyfills'),
     './src/index.js'
