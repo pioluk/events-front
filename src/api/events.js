@@ -1,7 +1,7 @@
 import { apiGet } from './utils'
 import { API_URL } from './config'
 
-export const getEvent = id => apiGet('event/' + id)
+export const getEvent = (id: number) => apiGet('event/' + id)
 
 export const getEvents = () => apiGet('event')
 
