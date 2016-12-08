@@ -8,9 +8,9 @@ export function* getEventsFlow () {
   while (true) {
     yield take(FETCH_EVENTS_REQUEST)
     try {
-      const events = yield call(getEvents)
+      const { count, events } = yield call(getEvents)
       if (events) {
-        yield put(eventActionCreators.fetchEventsSuccess(events))
+        yield put(eventActionCreators.fetchEventsSuccess(count, events))
       }
     }
     catch (err) {
@@ -26,7 +26,7 @@ export function* getEventDetailsFlow () {
       const eventDetails = yield call(getEvent, eventId)
       if (eventDetails) {
         yield put(eventActionCreators.fetchEventDetailsSuccess(eventDetails))
-        yield put(selectEvent('#' + eventDetails.color, eventDetails.imageThumbnail, eventDetails.imageBig))
+        yield put(selectEvent('#' + eventDetails.color, eventDetails.imageThumbnail, eventDetails.image))
       }
     }
     catch (err) {

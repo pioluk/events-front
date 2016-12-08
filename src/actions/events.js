@@ -18,21 +18,22 @@ export function fetchEventsRequest () {
   }
 }
 
-export function fetchEventsSuccess (events: Array<any>) {
+export function fetchEventsSuccess (count: number, events: Array<any>) {
   return {
     type: FETCH_EVENTS_SUCCESS,
+    count,
     events
   }
 }
 
-export function fetchEventsFailure (error) {
+export function fetchEventsFailure (error: Error) {
   return {
     type: FETCH_EVENTS_FAILURE,
     error
   }
 }
 
-export function addEvent (event) {
+export function addEvent (event: any) {
   return {
     type: ADD_EVENT,
     event
@@ -46,7 +47,7 @@ export function addEventSuccess (event: any) {
   }
 }
 
-export function addEventFailure (error) {
+export function addEventFailure (error: any) {
   return {
     type: ADD_EVENT_FAILURE,
     error
@@ -67,7 +68,7 @@ export function fetchEventDetailsSuccess (eventDetails: any) {
   }
 }
 
-export function fetchEventDetailsFailure (error) {
+export function fetchEventDetailsFailure (error: Error) {
   return {
     type: FETCH_EVENT_DETAILS_FAILURE,
     error

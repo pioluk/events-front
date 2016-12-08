@@ -85,7 +85,7 @@ Object {
 
 exports[`events actions should create an action to send fetched events 1`] = `
 Object {
-  "events": Array [
+  "count": Array [
     Object {
       "UserId": 1,
       "color": "a5dfd8",
@@ -109,6 +109,7 @@ Object {
       "updatedAt": "2016-10-26T07:06:40.243Z",
     },
   ],
+  "events": undefined,
   "type": "FETCH_EVENTS_SUCCESS",
 }
 `;
