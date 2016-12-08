@@ -45,14 +45,14 @@ describe('events sagas', () => {
     const eventDetails = {
       id: 1,
       UserId: 1,
-      title: "nihil voluptas rerum",
-      description: "Ut ut ipsam. Hic voluptas illo ex voluptatibus dolores aut sed beatae vel. Quo fuga cum animi est voluptatem. Animi numquam magni. Ut labore deleniti tenetur nulla magnam maxime enim. Molestiae omnis harum id sequi accusantium tempora. Tempore est dolorem nesciunt voluptatem quaerat qui dolorum non. Praesentium perferendis ut.",
-      dateStart: "2016-05-23T17:38:11.010Z",
-      dateEnd: "2016-12-06T02:03:56.063Z",
-      color: "a5dfd8",
+      title: 'nihil voluptas rerum',
+      description: 'Ut ut ipsam. Hic voluptas illo ex voluptatibus dolores aut sed beatae vel. Quo fuga cum animi est voluptatem. Animi numquam magni. Ut labore deleniti tenetur nulla magnam maxime enim. Molestiae omnis harum id sequi accusantium tempora. Tempore est dolorem nesciunt voluptatem quaerat qui dolorum non. Praesentium perferendis ut.',
+      dateStart: '2016-05-23T17:38:11.010Z',
+      dateEnd: '2016-12-06T02:03:56.063Z',
+      color: 'a5dfd8',
       image: undefined,
-      createdAt: "2016-10-26T07:06:39.152Z",
-      updatedAt: "2016-10-26T07:06:39.152Z"
+      createdAt: '2016-10-26T07:06:39.152Z',
+      updatedAt: '2016-10-26T07:06:39.152Z'
     }
     expect(generator.next(eventDetails).value)
       .toEqual(put(eventActions.fetchEventDetailsSuccess(eventDetails)))
@@ -83,15 +83,13 @@ describe('events sagas', () => {
     expect(generator.next().value).toEqual(take(ADD_EVENT))
 
     const event = {
-      "id": 1,
-      "title": "nihil voluptas rerum",
-      "description": "Ut ut ipsam. Hic voluptas illo ex voluptatibus dolores aut sed beatae vel. Quo fuga cum animi est voluptatem. Animi numquam magni. Ut labore deleniti tenetur nulla magnam maxime enim. Molestiae omnis harum id sequi accusantium tempora. Tempore est dolorem nesciunt voluptatem quaerat qui dolorum non. Praesentium perferendis ut.",
-      "dateStart": "2016-05-23T17:38:11.010Z",
-      "dateEnd": "2016-12-06T02:03:56.063Z",
-      "color": "a5dfd8",
-      "imageThumbnail": "/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAMCAgICAgMCAgIDAwMDBAYEBAQEBAgGBgUGCQgKCgkICQkKDA8MCgsOCwkJDRENDg8QEBEQCgwSExIQEw8QEBD/wAALCAABAAEBAREA/8QAFAABAAAAAAAAAAAAAAAAAAAACf/EABQQAQAAAAAAAAAAAAAAAAAAAAD/2gAIAQEAAD8AVN//2Q==",
-      "imageSmall": "http://example.com/small.jpg",
-      "imageBig": "http://example.com/big.jpg",
+      id: 1,
+      title: 'nihil voluptas rerum',
+      description: 'Ut ut ipsam. Hic voluptas illo ex voluptatibus dolores aut sed beatae vel. Quo fuga cum animi est voluptatem. Animi numquam magni. Ut labore deleniti tenetur nulla magnam maxime enim. Molestiae omnis harum id sequi accusantium tempora. Tempore est dolorem nesciunt voluptatem quaerat qui dolorum non. Praesentium perferendis ut.',
+      dateStart: '2016-05-23T17:38:11.010Z',
+      dateEnd: '2016-12-06T02:03:56.063Z',
+      color: 'a5dfd8',
+      image: undefined
     }
     expect(generator.next({ event }).value).toEqual(call(createEvent, event))
 
@@ -106,15 +104,13 @@ describe('events sagas', () => {
     expect(generator.next().value).toEqual(take(ADD_EVENT))
 
     const event = {
-      "id": 1,
-      "title": "nihil voluptas rerum",
-      "description": "Ut ut ipsam. Hic voluptas illo ex voluptatibus dolores aut sed beatae vel. Quo fuga cum animi est voluptatem. Animi numquam magni. Ut labore deleniti tenetur nulla magnam maxime enim. Molestiae omnis harum id sequi accusantium tempora. Tempore est dolorem nesciunt voluptatem quaerat qui dolorum non. Praesentium perferendis ut.",
-      "dateStart": "2016-05-23T17:38:11.010Z",
-      "dateEnd": "2016-12-06T02:03:56.063Z",
-      "color": "a5dfd8",
-      "imageThumbnail": "/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAMCAgICAgMCAgIDAwMDBAYEBAQEBAgGBgUGCQgKCgkICQkKDA8MCgsOCwkJDRENDg8QEBEQCgwSExIQEw8QEBD/wAALCAABAAEBAREA/8QAFAABAAAAAAAAAAAAAAAAAAAACf/EABQQAQAAAAAAAAAAAAAAAAAAAAD/2gAIAQEAAD8AVN//2Q==",
-      "imageSmall": "http://example.com/small.jpg",
-      "imageBig": "http://example.com/big.jpg",
+      id: 1,
+      title: 'nihil voluptas rerum',
+      description: 'Ut ut ipsam. Hic voluptas illo ex voluptatibus dolores aut sed beatae vel. Quo fuga cum animi est voluptatem. Animi numquam magni. Ut labore deleniti tenetur nulla magnam maxime enim. Molestiae omnis harum id sequi accusantium tempora. Tempore est dolorem nesciunt voluptatem quaerat qui dolorum non. Praesentium perferendis ut.',
+      dateStart: '2016-05-23T17:38:11.010Z',
+      dateEnd: '2016-12-06T02:03:56.063Z',
+      color: 'a5dfd8',
+      image: undefined
     }
 
     const error = new Error('Event creation failed')
