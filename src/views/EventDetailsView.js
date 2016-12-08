@@ -34,6 +34,10 @@ class EventDetailsView extends Component {
     }
   }
 
+  handleSubmit = e => {
+    e.preventDefault()
+  }
+
   renderDate = (date: string) => {
     return fecha.format(new Date(date), 'MMM D, YYYY HH:mm')
   }
@@ -51,7 +55,7 @@ class EventDetailsView extends Component {
           </div>
         </div>
         <div>{event.description}</div>
-        <Comments />
+        <Comments comments={[]} onSubmit={this.handleSubmit} />
       </div>
     )
   }

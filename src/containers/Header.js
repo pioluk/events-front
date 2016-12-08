@@ -58,8 +58,8 @@ class Header extends Component {
             width="100%"
             height={320}
             color={this.props.color}
-            small={this.props.thumbnail}
-            image={this.props.image}
+            small={'http://pioluk-event-images-processed.s3-website.eu-central-1.amazonaws.com/nano/' + this.props.image}
+            image={'http://pioluk-event-images-processed.s3-website.eu-central-1.amazonaws.com/large/' + this.props.image}
             style={{position: 'absolute', top: 0, left: 0}} />
         }
         <AppMenu
@@ -90,4 +90,4 @@ const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(actionCreators, dispatch)
 })
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps))(Header)

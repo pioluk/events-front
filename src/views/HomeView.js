@@ -47,7 +47,7 @@ class HomeView extends Component {
           style={styles.gridList}>
           {events.map(event =>
             <GridTile
-              id={event.id}
+              key={event.id}
               title={
                 <Link
                   style={{ color: 'inherit', textDecoration: 'none', cursor: 'pointer' }}
