@@ -47,6 +47,7 @@ class HomeView extends Component {
           style={styles.gridList}>
           {events.map(event =>
             <GridTile
+              id={event.id}
               title={
                 <Link
                   style={{ color: 'inherit', textDecoration: 'none', cursor: 'pointer' }}
@@ -58,8 +59,8 @@ class HomeView extends Component {
                 keepAspect={true}
                 height={200}
                 color={'#' + event.color}
-                small={'data:image/jpeg;base64,' + event.imageThumbnail}
-                image={event.imageSmall} />
+                small={'http://pioluk-event-images-processed.s3-website.eu-central-1.amazonaws.com/nano/' + event.image}
+                image={'http://pioluk-event-images-processed.s3-website.eu-central-1.amazonaws.com/xlarge/' + event.image} />
             </GridTile>
            )}
         </GridList>
