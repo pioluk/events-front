@@ -27,7 +27,7 @@ const EventTile = ({ event, ...props }) => (
 )
 
 EventTile.propTypes = {
-  events: PropTypes.object.isRequired
+  event: PropTypes.object.isRequired
 }
 
 export default EventTile
