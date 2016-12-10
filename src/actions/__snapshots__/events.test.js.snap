@@ -24,6 +24,7 @@ Object {
 
 exports[`events actions should create an action to fetch events 1`] = `
 Object {
+  "page": 1,
   "type": "FETCH_EVENTS_REQUEST",
 }
 `;

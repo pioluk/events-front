@@ -4,7 +4,7 @@ import * as actions from './events'
 
 describe('events actions', () => {
   it('should create an action to fetch events', () => {
-    expect(actions.fetchEventsRequest()).toMatchSnapshot()
+    expect(actions.fetchEventsRequest(1)).toMatchSnapshot()
   })
 
   it('should create an action to send fetched events', () => {

@@ -12,9 +12,10 @@ import {
   FETCH_EVENT_DETAILS_FAILURE
 } from '../constants/events'
 
-export function fetchEventsRequest () {
+export function fetchEventsRequest (page: number) {
   return {
-    type: FETCH_EVENTS_REQUEST
+    type: FETCH_EVENTS_REQUEST,
+    page
   }
 }
 
