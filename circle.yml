@@ -32,4 +32,4 @@ deployment:
   hub:
     branch: master
     commands:
-      - ./deploy.sh
+      - test $DEPLOY = true && ./deploy.sh
