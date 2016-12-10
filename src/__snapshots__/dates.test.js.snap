@@ -1,1 +1,0 @@
-exports[`dates formatDateTimeShort should format date correctly 1`] = `"Jan 1, 13:00"`;
