@@ -1,9 +1,11 @@
 import { apiGet } from './utils'
-import { API_URL } from './config'
+import { API_URL, EVENT_PAGE_SIZE } from '../config'
 
-export const getEvent = (id: number) => apiGet('event/' + id)
+export const getEvent = (id: number) =>
+  apiGet('event/' + id)
 
-export const getEvents = () => apiGet('event')
+export const getEvents = (page: number) =>
+  apiGet(`event?limit=${EVENT_PAGE_SIZE}&offset=${(page - 1) * EVENT_PAGE_SIZE}`)
 
 export const createEvent = event => {
   const user = JSON.parse(localStorage.getItem('user')) || {}
