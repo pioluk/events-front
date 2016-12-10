@@ -4,6 +4,7 @@
   "author": "Piotr Łukomiak <181423@edu.p.lodz.pl>",
   "private": true,
   "scripts": {
+    "postinstall": "flow-typed",
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
@@ -62,6 +63,7 @@
     "filesize": "3.3.0",
     "find-cache-dir": "0.1.1",
     "flow-bin": "^0.36.0",
+    "flow-typed": "^2.0.0",
     "fs-extra": "0.30.0",
     "gzip-size": "3.0.0",
     "html-webpack-plugin": "2.24.0",
