@@ -2,9 +2,9 @@ import React from 'react'
 import CommentForm from './CommentForm'
 import CommentList from './CommentList'
 
-const Comments = ({ comments, onSubmit }) => (
+const Comments = ({ comments, isLoading, onAdd }) => (
   <div>
-    <CommentForm onSubmit={onSubmit} />
+    <CommentForm onAdd={onAdd} />
     <CommentList comments={comments} />
   </div>
 )
