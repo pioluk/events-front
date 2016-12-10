@@ -99,4 +99,8 @@ describe('events actions', () => {
     const error = new Error('Event details fetching failed.')
     expect(actions.fetchEventDetailsFailure(error)).toMatchSnapshot()
   })
+
+  it('should create an action to increase page', () => {
+    expect(actions.increasePage()).toMatchSnapshot()
+  })
 })

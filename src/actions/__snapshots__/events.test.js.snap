@@ -29,6 +29,12 @@ Object {
 }
 `;
 
+exports[`events actions should create an action to increase page 1`] = `
+Object {
+  "type": "INCREASE_PAGE",
+}
+`;
+
 exports[`events actions should create an action to indicate an event creation error 1`] = `
 Object {
   "error": [Error: Event creation error.],

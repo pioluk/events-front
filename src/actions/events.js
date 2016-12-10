@@ -9,7 +9,8 @@ import {
   ADD_EVENT_FAILURE,
   FETCH_EVENT_DETAILS_REQUEST,
   FETCH_EVENT_DETAILS_SUCCESS,
-  FETCH_EVENT_DETAILS_FAILURE
+  FETCH_EVENT_DETAILS_FAILURE,
+  INCREASE_PAGE
 } from '../constants/events'
 
 export function fetchEventsRequest (page: number) {
@@ -73,5 +74,11 @@ export function fetchEventDetailsFailure (error: Error) {
   return {
     type: FETCH_EVENT_DETAILS_FAILURE,
     error
+  }
+}
+
+export function increasePage () {
+  return {
+    type: INCREASE_PAGE
   }
 }
