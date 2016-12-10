@@ -1,15 +1,50 @@
-.card {
-  margin-top: 180px;
-  width: 880px;
-  height: 150vh; /* TODO: remove */
+$break-lg: 925px;
+$break-md: 700px;
+$break-sm: 520px;
+
+.detailsViewWrapper {
+  width: 900px;
   margin: 0 auto;
-  padding: 3em 2em 2em 3em;
-  border-radius: 0.1rem;
+  margin-top: 90px;
+
+  @media screen and (max-width: $break-lg) {
+    width: 680px;
+  }
+
+  @media screen and (max-width: $break-md) {
+    width: 480px;
+  }
+
+  @media screen and (max-width: $break-sm) {
+    width: 100%;
+    [data-react-toolbox="card"] {
+      border-radius: 0;
+    }
+  }
 }
 
-@media (max-width: 950px) {
-  .card {
-    width: 600px;
+.eventView {
+  padding: 3em 2em 2em 3em;
+
+  @media screen and (max-width: $break-md) {
+    padding: 2em 1em 1em 2em;
+  }
+}
+
+.eventTitle {
+  font-size: 3.4rem;
+
+  @media screen and (max-width: $break-lg) {
+    font-size: 2.8rem;
+  }
+
+  @media screen and (max-width: $break-md) {
+    font-size: 2.2rem;
+  }
+
+  @media screen and (max-width: $break-sm) {
+    font-size: 1.6em;
+    word-wrap: break-word;
   }
 }
 

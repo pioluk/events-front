@@ -7,7 +7,7 @@ import Card from 'react-toolbox/lib/card'
 import ProgressBar from 'react-toolbox/lib/progress_bar'
 import IconLabel from '../components/IconLabel'
 import * as actionCreators from '../actions/events'
-import { card, progressBar } from './EventDetailsView.scss'
+import { detailsViewWrapper, eventView, eventTitle, progressBar } from './EventDetailsView.scss'
 import MapPreview from '../components/MapPreview'
 import Comments from '../components/Comments'
 
@@ -44,8 +44,8 @@ class EventDetailsView extends Component {
 
   renderEvent = (event: any) => {
     return (
-      <div>
-        <h3>{event.title}</h3>
+      <div className={eventView}>
+        <h3 className={eventTitle}>{event.title}</h3>
         <div style={{ display: 'flex', marginTop: 15, marginBottom: 15 }}>
           <div style={{ flex: 1 }}>
             <IconLabel title="From" icon="schedule">{this.renderDate(event.dateStart)}</IconLabel>
@@ -64,8 +64,8 @@ class EventDetailsView extends Component {
     const event = this.props.event
 
     return (
-      <div style={{ marginTop: 65 }}>
-        <Card raised className={card}>
+      <div className={detailsViewWrapper}>
+        <Card raised>
           { !!event
               ? this.renderEvent(event)
               : <ProgressBar className={progressBar} type="circular" mode="indeterminate" />
