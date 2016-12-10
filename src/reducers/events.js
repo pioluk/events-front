@@ -7,7 +7,6 @@ import {
   FETCH_EVENT_DETAILS_REQUEST,
   FETCH_EVENT_DETAILS_SUCCESS,
   FETCH_EVENT_DETAILS_FAILURE,
-  INCREASE_PAGE
 } from '../constants/events'
 
 type Event = any
@@ -15,23 +14,19 @@ type Event = any
 type EventsState = {
   count: number,
   error: ?Error,
-  eventComments: Array<any>,
   eventCount: number,
   eventDetails: ?any,
   events: Array<Event>,
   isLoading: boolean,
-  page: number
 }
 
 const initialState: EventsState = {
   count: 0,
   error: null,
-  eventComments: [],
   eventCount: 0,
   eventDetails: null,
   events: [],
   isLoading: false,
-  page: 0
 }
 
 export default function eventsReducer (state: EventsState = initialState, action: any) {
@@ -63,9 +58,6 @@ export default function eventsReducer (state: EventsState = initialState, action
         ...state,
         error: action.error
       }
-
-    case INCREASE_PAGE:
-      return { ...state, page: state.page + 1 }
 
     default:
       return state
