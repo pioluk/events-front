@@ -3,30 +3,26 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter, Link } from 'react-router'
-import { GridList, GridTile } from 'material-ui/GridList'
-
-import LazyImage from '../components/LazyImage'
+import ProgressBar from 'react-toolbox/lib/progress_bar'
+import EventList from '../components/EventList'
+import LoadMoreButton from '../components/LoadMoreButton'
 import Fab from '../components/Fab'
-
 import { fetchEventsRequest } from '../actions/events'
 import { selectEvent } from '../actions/ui'
-
-const styles = {
-  root: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around'
-  },
-  gridList: {
-    width: 900,
-    margin: '0 auto'
-  }
-}
+import { homeView } from './HomeView.scss'
+import { progressBar } from './EventDetailsView.scss'
+import { EVENT_PAGE_SIZE } from '../config'
 
 class HomeView extends Component {
 
+  loadEvents = () => {
+    this.props.fetchEventsRequest(this.props.page + 1)
+  }
+
   componentWillMount() {
-    this.props.fetchEventsRequest()
+    if (this.props.events.length === 0) {
+      this.loadEvents()
+    }
   }
 
   navigateToEvent = (event: any) => {
@@ -34,37 +30,37 @@ class HomeView extends Component {
     this.props.selectEvent(event.color, event.imageThumbnail, event.imageBig)
   }
 
+  handleEventClick = (event: any) => {
+    this.navigateToEvent(event)
+  }
+
+  handleLoadMore = () => {
+    this.loadEvents()
+  }
+
+  renderList = () => {
+    const { events, isLoading, count, eventCount } = this.props
+
+    return (
+      <div>
+        <EventList events={events} onEventClick={this.handleEventClick} />
+        { eventCount < count
+            && <LoadMoreButton loading={isLoading} onClick={this.handleLoadMore} />
+        }
+      </div>
+
+    )
+  }
+
   render() {
-    const { events } = this.props
+    const { events, isLoading } = this.props
 
     return(
-      <div style={{ padding: 20 }}>
-        <h3>HomeView</h3>
-
-        <GridList
-          cols={4}
-          cellHeight={200}
-          style={styles.gridList}>
-          {events.map(event =>
-            <GridTile
-              key={event.id}
-              title={
-                <Link
-                  style={{ color: 'inherit', textDecoration: 'none', cursor: 'pointer' }}
-                  onClick={() => this.navigateToEvent(event)}>
-                  {event.title}
-                </Link>
-              }>
-              <LazyImage
-                keepAspect={true}
-                height={200}
-                color={'#' + event.color}
-                small={'http://pioluk-event-images-processed.s3-website.eu-central-1.amazonaws.com/nano/' + event.image}
-                image={'http://pioluk-event-images-processed.s3-website.eu-central-1.amazonaws.com/xlarge/' + event.image} />
-            </GridTile>
-           )}
-        </GridList>
-
+      <div className={homeView}>
+        { isLoading && events.length === 0
+            ? <ProgressBar className={progressBar} type="circular" mode="indeterminate" />
+            : this.renderList()
+        }
         <Link to="/event/new">
           <Fab icon="add" label="Add a new event" />
         </Link>
@@ -75,11 +71,15 @@ class HomeView extends Component {
 }
 
 const mapStateToProps = state => ({
-  events: state.events.events
+  page: state.events.eventCount / EVENT_PAGE_SIZE,
+  count: state.events.count,
+  eventCount: state.events.eventCount,
+  events: state.events.events,
+  isLoading: state.events.isLoading
 })
 
 const mapDispatchToProps = dispatch => ({
-  fetchEventsRequest: () => dispatch(fetchEventsRequest()),
+  fetchEventsRequest: page => dispatch(fetchEventsRequest(page)),
   selectEvent: (color, thumbnail, image) => dispatch(selectEvent(color, thumbnail, image))
 })
 

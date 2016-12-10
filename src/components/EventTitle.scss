@@ -1,0 +1,37 @@
+.tile {
+  position: relative;
+  overflow: hidden;
+  min-width: 280px;
+  height: 150px;
+  margin-right: 6px;
+  margin-bottom: 6px;
+}
+
+.overlay {
+  display: flex;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 60px;
+  background: rgba(0, 0, 0, 0.40);
+  color: #fff;
+  align-items: center;
+}
+
+.text {
+  margin-left: 12px;
+  flex-grow: 1;
+}
+
+.title {
+  font-size: 16px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.date {
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
