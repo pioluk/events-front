@@ -1,27 +1,35 @@
 exports[`events reducer should handle FETCH_EVENT_DETAILS_FAILURE 1`] = `
 Object {
+  "count": 0,
   "error": [Error: Fetch event details failure],
   "eventComments": Array [],
+  "eventCount": 0,
   "eventDetails": null,
   "events": Array [],
   "isLoading": false,
+  "page": 0,
 }
 `;
 
 exports[`events reducer should handle FETCH_EVENT_DETAILS_REQUEST 1`] = `
 Object {
+  "count": 0,
   "error": null,
   "eventComments": Array [],
+  "eventCount": 0,
   "eventDetails": 1,
   "events": Array [],
   "isLoading": false,
+  "page": 0,
 }
 `;
 
 exports[`events reducer should handle FETCH_EVENT_DETAILS_SUCCESS 1`] = `
 Object {
+  "count": 0,
   "error": null,
   "eventComments": Array [],
+  "eventCount": 0,
   "eventDetails": Object {
     "UserId": 1,
     "color": "a5dfd8",
@@ -30,38 +38,48 @@ Object {
     "dateStart": "2016-05-23T17:38:11.010Z",
     "description": "Ut ut ipsam. Hic voluptas illo ex voluptatibus dolores aut sed beatae vel. Quo fuga cum animi est voluptatem. Animi numquam magni. Ut labore deleniti tenetur nulla magnam maxime enim. Molestiae omnis harum id sequi accusantium tempora. Tempore est dolorem nesciunt voluptatem quaerat qui dolorum non. Praesentium perferendis ut.",
     "id": 1,
+    "image": null,
     "title": "nihil voluptas rerum",
     "updatedAt": "2016-10-26T07:06:39.152Z",
   },
   "events": Array [],
   "isLoading": false,
+  "page": 0,
 }
 `;
 
 exports[`events reducer should handle FETCH_EVENTS_FAILURE 1`] = `
 Object {
+  "count": 0,
   "error": [Error: Fetch events failed.],
   "eventComments": Array [],
+  "eventCount": 0,
   "eventDetails": null,
   "events": Array [],
   "isLoading": false,
+  "page": 0,
 }
 `;
 
 exports[`events reducer should handle FETCH_EVENTS_REQUEST 1`] = `
 Object {
+  "count": 0,
   "error": null,
   "eventComments": Array [],
+  "eventCount": 0,
   "eventDetails": null,
   "events": Array [],
   "isLoading": true,
+  "page": 0,
 }
 `;
 
 exports[`events reducer should handle FETCH_EVENTS_SUCCESS 1`] = `
 Object {
+  "count": 2,
   "error": null,
   "eventComments": Array [],
+  "eventCount": 2,
   "eventDetails": null,
   "events": Array [
     Object {
@@ -72,6 +90,7 @@ Object {
       "dateStart": "2016-05-23T17:38:11.010Z",
       "description": "Ut ut ipsam. Hic voluptas illo ex voluptatibus dolores aut sed beatae vel. Quo fuga cum animi est voluptatem. Animi numquam magni. Ut labore deleniti tenetur nulla magnam maxime enim. Molestiae omnis harum id sequi accusantium tempora. Tempore est dolorem nesciunt voluptatem quaerat qui dolorum non. Praesentium perferendis ut.",
       "id": 1,
+      "image": null,
       "title": "nihil voluptas rerum",
       "updatedAt": "2016-10-26T07:06:39.152Z",
     },
@@ -83,20 +102,38 @@ Object {
       "dateStart": "2016-07-04T18:33:59.969Z",
       "description": "Sequi sit minima quae totam dolores suscipit. Vero exercitationem repellendus velit. Earum ullam unde explicabo earum. Corporis architecto ab quisquam consectetur. Odio odit aliquid ex sint consequatur similique. Aut et occaecati saepe rem cupiditate et veritatis aut. Similique molestias eveniet libero labore est laboriosam. Molestiae reiciendis error neque dignissimos.",
       "id": 2,
+      "image": null,
       "title": "voluptatem eos nostrum",
       "updatedAt": "2016-10-26T07:06:40.243Z",
     },
   ],
   "isLoading": false,
+  "page": 0,
+}
+`;
+
+exports[`events reducer should handle INCREASE_PAGE 1`] = `
+Object {
+  "count": 0,
+  "error": null,
+  "eventComments": Array [],
+  "eventCount": 0,
+  "eventDetails": null,
+  "events": Array [],
+  "isLoading": false,
+  "page": 1,
 }
 `;
 
 exports[`events reducer should return the initial state 1`] = `
 Object {
+  "count": 0,
   "error": null,
   "eventComments": Array [],
+  "eventCount": 0,
   "eventDetails": null,
   "events": Array [],
   "isLoading": false,
+  "page": 0,
 }
 `;

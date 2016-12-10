@@ -6,25 +6,32 @@ import {
   FETCH_EVENTS_FAILURE,
   FETCH_EVENT_DETAILS_REQUEST,
   FETCH_EVENT_DETAILS_SUCCESS,
-  FETCH_EVENT_DETAILS_FAILURE
+  FETCH_EVENT_DETAILS_FAILURE,
+  INCREASE_PAGE
 } from '../constants/events'
 
 type Event = any
 
 type EventsState = {
-  isLoading: boolean,
-  events: Array<Event>,
-  eventDetails: ?any,
+  count: number,
+  error: ?Error,
   eventComments: Array<any>,
-  error: ?Error
+  eventCount: number,
+  eventDetails: ?any,
+  events: Array<Event>,
+  isLoading: boolean,
+  page: number
 }
 
 const initialState: EventsState = {
-  isLoading: false,
-  events: [],
-  eventDetails: null,
+  count: 0,
+  error: null,
   eventComments: [],
-  error: null
+  eventCount: 0,
+  eventDetails: null,
+  events: [],
+  isLoading: false,
+  page: 0
 }
 
 export default function eventsReducer (state: EventsState = initialState, action: any) {
@@ -36,7 +43,9 @@ export default function eventsReducer (state: EventsState = initialState, action
     case FETCH_EVENTS_SUCCESS:
       return {
         ...state,
+        count: action.count,
         isLoading: false,
+        eventCount: state.eventCount + action.events.length,
         events: [...state.events, ...action.events]
       }
 
@@ -54,6 +63,9 @@ export default function eventsReducer (state: EventsState = initialState, action
         ...state,
         error: action.error
       }
+
+    case INCREASE_PAGE:
+      return { ...state, page: state.page + 1 }
 
     default:
       return state

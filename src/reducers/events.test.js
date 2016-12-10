@@ -9,12 +9,14 @@ describe('events reducer', () => {
   })
 
   it('should handle FETCH_EVENTS_REQUEST', () => {
-    const state = reducer(undefined, actions.fetchEventsRequest())
+    const page = 1
+    const state = reducer(undefined, actions.fetchEventsRequest(page))
     expect(state).toMatchSnapshot()
   })
 
   it('should handle FETCH_EVENT_DETAILS_REQUEST', () => {
-    const state = reducer(undefined, actions.fetchEventDetailsSuccess(1))
+    const eventId = 1
+    const state = reducer(undefined, actions.fetchEventDetailsSuccess(eventId))
     expect(state).toMatchSnapshot()
   })
 
@@ -29,6 +31,7 @@ describe('events reducer', () => {
         dateStart: '2016-05-23T17:38:11.010Z',
         dateEnd: '2016-12-06T02:03:56.063Z',
         color: 'a5dfd8',
+        image: null,
         createdAt: '2016-10-26T07:06:39.152Z',
         updatedAt: '2016-10-26T07:06:39.152Z'
       },
@@ -40,6 +43,7 @@ describe('events reducer', () => {
         dateStart: '2016-07-04T18:33:59.969Z',
         dateEnd: '2017-08-27T03:37:53.566Z',
         color: '33ed3f',
+        image: null,
         createdAt: '2016-10-26T07:06:40.243Z',
         updatedAt: '2016-10-26T07:06:40.243Z'
       }
@@ -63,6 +67,7 @@ describe('events reducer', () => {
       dateStart: '2016-05-23T17:38:11.010Z',
       dateEnd: '2016-12-06T02:03:56.063Z',
       color: 'a5dfd8',
+      image: null,
       createdAt: '2016-10-26T07:06:39.152Z',
       updatedAt: '2016-10-26T07:06:39.152Z'
     }
@@ -73,6 +78,11 @@ describe('events reducer', () => {
   it('should handle FETCH_EVENT_DETAILS_FAILURE', () => {
     const error = new Error('Fetch event details failure')
     const state = reducer(undefined, actions.fetchEventDetailsFailure(error))
+    expect(state).toMatchSnapshot()
+  })
+
+  it('should handle INCREASE_PAGE', () => {
+    const state = reducer(undefined, actions.increasePage())
     expect(state).toMatchSnapshot()
   })
 })
