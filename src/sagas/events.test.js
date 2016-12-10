@@ -13,7 +13,8 @@ describe('events sagas', () => {
 
     expect(generator.next().value).toEqual(take(FETCH_EVENTS_REQUEST))
 
-    expect(generator.next().value).toEqual(call(getEvents))
+    const page = 1
+    expect(generator.next({ page }).value).toEqual(call(getEvents, page))
 
     const count = 3
     const events = [{ id: 1 }, { id: 2 }, { id: 3 }]
@@ -29,7 +30,8 @@ describe('events sagas', () => {
 
     expect(generator.next().value).toEqual(take(FETCH_EVENTS_REQUEST))
 
-    expect(generator.next().value).toEqual(call(getEvents))
+    const page = 1
+    expect(generator.next({ page }).value).toEqual(call(getEvents, page))
 
     const error = new Error('Error fetching events.')
     expect(generator.throw(error).value).toEqual(put(eventActions.fetchEventsFailure(error)))
