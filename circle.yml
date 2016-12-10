@@ -19,7 +19,7 @@ dependencies:
       else
         echo "The correct version of Yarn is already installed."
       fi
-    - rm -rf node_modules
+    # - rm -rf node_modules
   cache_directories:
     - ~/.yarn
     - ~/.yarn_cache
