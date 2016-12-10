@@ -1,3 +1,5 @@
+// @flow
+
 import { apiGet, apiPost, apiDelete } from './utils'
 
 export const getComments = (eventId: number) =>

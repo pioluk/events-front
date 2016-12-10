@@ -19,9 +19,9 @@ export function* getCommentsFlow () {
 
 export function* createCommentFlow () {
   while (true) {
-    const { text } = yield take(ADD_COMMENT)
+    const { eventId, text } = yield take(ADD_COMMENT)
     try {
-      const comment = yield call(createComment, { text })
+      const comment = yield call(createComment, eventId, text)
       if (comment) {
         yield put(actions.addCommentSuccess(comment))
       }
