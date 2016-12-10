@@ -4,7 +4,7 @@
   "author": "Piotr Łukomiak <181423@edu.p.lodz.pl>",
   "private": true,
   "scripts": {
-    "postinstall": "flow-typed",
+    "postinstall": "test $CI || flow-typed",
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
