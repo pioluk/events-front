@@ -51,6 +51,7 @@ Object {
 
 exports[`comments actions should create an action representing text to create comment 1`] = `
 Object {
+  "eventId": 1,
   "text": "Comment #1",
   "type": "ADD_COMMENT",
 }

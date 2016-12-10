@@ -53,8 +53,9 @@ describe('comments actions', () => {
   })
 
   it('should create an action representing text to create comment', () => {
+    const eventId = 1
     const text = 'Comment #1'
-    expect(actions.addComment(text)).toMatchSnapshot()
+    expect(actions.addComment(eventId, text)).toMatchSnapshot()
   })
 
   it('should create an action representing a comment to add', () => {

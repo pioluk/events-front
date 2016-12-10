@@ -36,9 +36,10 @@ export function fetchCommentsFailure (error: Error) {
   }
 }
 
-export function addComment (text: string) {
+export function addComment (eventId: number, text: string) {
   return {
     type: ADD_COMMENT,
+    eventId,
     text
   }
 }
