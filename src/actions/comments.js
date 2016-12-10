@@ -10,14 +10,14 @@ import {
   REMOVE_COMMENT,
   REMOVE_COMMENT_SUCCESS,
   REMOVE_COMMENT_FAILURE,
+  RESET_COMMENTS
 } from '../constants/comments'
 
-export function fetchComments (eventId: number, limit: number, offset: number) {
+export function fetchComments (eventId: number, page: number) {
   return {
     type: FETCH_COMMENTS,
     eventId,
-    limit,
-    offset
+    page
   }
 }
 
@@ -76,5 +76,11 @@ export function removeCommentFailure (error: Error) {
   return {
     type: REMOVE_COMMENT_FAILURE,
     error
+  }
+}
+
+export function reset () {
+  return {
+    type: RESET_COMMENTS
   }
 }

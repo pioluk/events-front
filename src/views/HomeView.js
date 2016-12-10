@@ -53,7 +53,8 @@ class HomeView extends Component {
   }
 
   render() {
-    const { events, isLoading } = this.props
+    const { events, isLoading, page } = this.props
+    console.log('epage', page)
 
     return(
       <div className={homeView}>

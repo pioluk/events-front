@@ -5,9 +5,9 @@ import { getComments, createComment, removeComment } from '../api/comments'
 
 export function* getCommentsFlow () {
   while (true) {
-    const { eventId, limit, offset } = yield take(FETCH_COMMENTS)
+    const { eventId, page } = yield take(FETCH_COMMENTS)
     try {
-      const { count, comments } = yield call(getComments, eventId, limit, offset)
+      const { count, comments } = yield call(getComments, eventId, page)
       if (comments) {
         yield put(actions.fetchCommentsSuccess(count, comments))
       }

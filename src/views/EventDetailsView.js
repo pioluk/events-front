@@ -11,6 +11,7 @@ import * as commentActions from '../actions/comments'
 import { detailsViewWrapper, eventView, eventTitle, progressBar } from './EventDetailsView.scss'
 import MapPreview from '../components/MapPreview'
 import Comments from '../components/Comments'
+import { COMMENT_PAGE_SIZE } from '../config'
 
 class EventDetailsView extends Component {
 
@@ -33,7 +34,10 @@ class EventDetailsView extends Component {
     if (!event || !event.title) {
       this.props.fetchEvent(this.eventId)
     }
-    this.props.fetchComments(this.eventId)
+  }
+
+  loadComments = () => {
+    this.props.fetchComments(this.eventId, this.props.page + 1)
   }
 
   handleAdd = (text) => {
@@ -44,7 +48,7 @@ class EventDetailsView extends Component {
     return fecha.format(new Date(date), 'MMM D, YYYY HH:mm')
   }
 
-  renderEvent = (event: any, comments: any[], isLoadingComments: boolean) => {
+  renderEvent = (event: any, comments: any[], commentCount: number, isLoadingComments: boolean) => {
     return (
       <div className={eventView}>
         <h3 className={eventTitle}>{event.title}</h3>
@@ -57,19 +61,24 @@ class EventDetailsView extends Component {
           </div>
         </div>
         <div>{event.description}</div>
-        <Comments comments={comments} isLoading={isLoadingComments} onAdd={this.handleAdd} />
+        <Comments
+          comments={comments}
+          isLoading={isLoadingComments}
+          commentCount={commentCount}
+          onAdd={this.handleAdd}
+          onLoadMore={this.loadComments} />
       </div>
     )
   }
 
   render() {
-    const { event, comments, isLoadingComments } = this.props
+    const { event, comments, totalCount, isLoadingComments } = this.props
 
     return (
       <div className={detailsViewWrapper}>
         <Card raised>
           { !!event
-              ? this.renderEvent(event, comments, isLoadingComments)
+              ? this.renderEvent(event, comments, totalCount, isLoadingComments)
               : <ProgressBar className={progressBar} type="circular" mode="indeterminate" />
           }
         </Card>
@@ -80,14 +89,16 @@ class EventDetailsView extends Component {
 }
 
 const mapStateToProps = state => ({
+  page: (state.comments.commentCount / COMMENT_PAGE_SIZE) | 0,
   event: state.events.eventDetails,
   comments: state.comments.comments,
+  totalCount: state.comments.totalCount,
   isLoadingComments: state.comments.isLoading
 })
 
 const bindActionCreators = dispatch => ({
   fetchEvent: id => dispatch(eventActions.fetchEventDetailsReqeust(id)),
-  fetchComments: id => dispatch(commentActions.fetchComments(id, 20, 0)),
+  fetchComments: (id, page) => dispatch(commentActions.fetchComments(id, page)),
   addComment: (id, text) => dispatch(commentActions.addComment(id, text))
 })
 

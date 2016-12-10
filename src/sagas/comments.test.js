@@ -11,21 +11,17 @@ describe('comments saga', () => {
     expect(generator.next().value).toEqual(take(FETCH_COMMENTS))
 
     const eventId = 1
-    const limit = 20
-    const offset = 0
-    expect(generator.next({ eventId, limit, offset }).value)
-      .toEqual(call(getComments, eventId, limit, offset))
+    const page = 1
+    expect(generator.next({ eventId, page }).value)
+      .toEqual(call(getComments, eventId, page))
 
-    const count = 2
+    const count = 10
     const comments = [
       {
-        user: {
+        User: {
           id: 1,
           username: 'pioluk',
-          email: '181423@edu.p.lodz.pl',
           imageAvatar: null,
-          createdAt: '2016-12-01T13:02:38.213Z',
-          updatedAt: '2016-12-01T13:02:38.213Z'
         },
         id: 1,
         UserId: 1,
@@ -36,13 +32,10 @@ describe('comments saga', () => {
         deletedAt: null
       },
       {
-        user: {
+        User: {
           id: 1,
           username: 'pioluk',
-          email: '181423@edu.p.lodz.pl',
           imageAvatar: null,
-          createdAt: '2016-12-01T13:02:38.213Z',
-          updatedAt: '2016-12-01T13:02:38.213Z'
         },
         id: 2,
         UserId: 1,
@@ -65,10 +58,9 @@ describe('comments saga', () => {
     expect(generator.next().value).toEqual(take(FETCH_COMMENTS))
 
     const eventId = 1
-    const limit = 20
-    const offset = 0
-    expect(generator.next({ eventId, limit, offset }).value)
-      .toEqual(call(getComments, eventId, limit, offset))
+    const page = 1
+    expect(generator.next({ eventId, page }).value)
+      .toEqual(call(getComments, eventId, page))
 
     const error = new Error('Error fetching comments')
     expect(generator.throw(error).value)
@@ -82,17 +74,15 @@ describe('comments saga', () => {
 
     expect(generator.next().value).toEqual(take(ADD_COMMENT))
 
+    const eventId = 1
     const text = 'Comment #1'
-    expect(generator.next({ text }).value).toEqual(call(createComment, { text }))
+    expect(generator.next({ eventId, text }).value).toEqual(call(createComment, eventId, text))
 
     const comment = {
-      user: {
+      User: {
         id: 1,
         username: 'pioluk',
-        email: '181423@edu.p.lodz.pl',
         imageAvatar: null,
-        createdAt: '2016-12-01T13:02:38.213Z',
-        updatedAt: '2016-12-01T13:02:38.213Z'
       },
       id: 1,
       UserId: 1,
@@ -112,8 +102,9 @@ describe('comments saga', () => {
 
     expect(generator.next().value).toEqual(take(ADD_COMMENT))
 
+    const eventId = 1
     const text = 'Comment #1'
-    expect(generator.next({ text }).value).toEqual(call(createComment, { text }))
+    expect(generator.next({ eventId, text }).value).toEqual(call(createComment, eventId, text))
 
     const error = new Error('Comment adding error.')
     expect(generator.throw(error).value).toEqual(put(actions.addCommentFailure(error)))

@@ -9,23 +9,26 @@ import {
   ADD_COMMENT_FAILURE,
   REMOVE_COMMENT,
   REMOVE_COMMENT_SUCCESS,
-  REMOVE_COMMENT_FAILURE
+  REMOVE_COMMENT_FAILURE,
+  RESET_COMMENTS
 } from '../constants/comments'
 
 type Comment = any
 
 type CommentsState = {
-  count: number,
+  totalCount: number,
+  commentCount: number,
   comments: Array<Comment>,
   error: ?Error,
-  isLoading: boolean
+  isLoading: boolean,
 }
 
 const initialState: CommentsState = {
-  count: 0,
+  totalCount: 0,
+  commentCount: 0,
   comments: [],
   error: null,
-  isLoading: false
+  isLoading: false,
 }
 
 export default function commentsReducer (state: CommentsState = initialState, action: any) {
@@ -34,7 +37,13 @@ export default function commentsReducer (state: CommentsState = initialState, ac
       return { ...state, isLoading: true }
 
     case FETCH_COMMENTS_SUCCESS:
-      return { ...state, count: action.count, comments: action.comments, isLoading: false }
+      return {
+        ...state,
+        totalCount: action.count,
+        commentCount: state.commentCount + action.comments.length,
+        comments: [...state.comments, ...action.comments],
+        isLoading: false
+      }
 
     case FETCH_COMMENTS_FAILURE:
       return { ...state, error: action.error, isLoading: false }
@@ -58,6 +67,9 @@ export default function commentsReducer (state: CommentsState = initialState, ac
 
     case REMOVE_COMMENT_FAILURE:
       return { ...state, error: action.error }
+
+    case RESET_COMMENTS:
+      return initialState
 
     default:
       return state

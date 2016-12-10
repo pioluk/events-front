@@ -1,8 +1,22 @@
 import { call, take, put } from 'redux-saga/effects'
-import { FETCH_EVENTS_REQUEST, FETCH_EVENT_DETAILS_REQUEST, ADD_EVENT } from '../constants/events'
+import {
+  FETCH_EVENTS_REQUEST,
+  FETCH_EVENT_DETAILS_REQUEST,
+  FETCH_EVENT_DETAILS_SUCCESS,
+  ADD_EVENT
+} from '../constants/events'
 import * as actions from '../actions/events'
+import { fetchComments, reset } from '../actions/comments'
 import { selectEvent } from '../actions/ui'
 import { getEvent, getEvents, createEvent } from '../api/events'
+
+export function* loadEventComments () {
+  while (true) {
+    const { eventDetails: event } = yield take(FETCH_EVENT_DETAILS_SUCCESS)
+    yield put(reset())
+    yield put(fetchComments(event.id, 1))
+  }
+}
 
 export function* getEventsFlow () {
   while (true) {

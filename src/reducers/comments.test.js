@@ -9,20 +9,20 @@ describe('comments reducer', () => {
   })
 
   it('should handle FETCH_COMMENTS', () => {
-    const state = reducer(undefined, actions.fetchComments(1, 20, 0))
+    const eventId = 1
+    const page = 1
+    const state = reducer(undefined, actions.fetchComments(eventId, page))
     expect(state).toMatchSnapshot()
   })
 
   it('should handle FETCH_COMMENTS_SUCCESS', () => {
+    const count = 10
     const comments = [
       {
-        user: {
+        User: {
           id: 1,
           username: 'pioluk',
-          email: '181423@edu.p.lodz.pl',
           imageAvatar: null,
-          createdAt: '2016-12-01T13:02:38.213Z',
-          updatedAt: '2016-12-01T13:02:38.213Z'
         },
         id: 1,
         UserId: 1,
@@ -33,13 +33,10 @@ describe('comments reducer', () => {
         deletedAt: null
       },
       {
-        user: {
+        User: {
           id: 1,
           username: 'pioluk',
-          email: '181423@edu.p.lodz.pl',
           imageAvatar: null,
-          createdAt: '2016-12-01T13:02:38.213Z',
-          updatedAt: '2016-12-01T13:02:38.213Z'
         },
         id: 2,
         UserId: 1,
@@ -50,7 +47,7 @@ describe('comments reducer', () => {
         deletedAt: null
       }
     ]
-    const state = reducer(undefined, actions.fetchCommentsSuccess(comments))
+    const state = reducer(undefined, actions.fetchCommentsSuccess(count, comments))
     expect(state).toMatchSnapshot()
   })
 

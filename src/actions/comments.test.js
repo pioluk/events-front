@@ -98,4 +98,8 @@ describe('comments actions', () => {
     const error = new Error('Comment removing failed')
     expect(actions.removeCommentFailure(error)).toMatchSnapshot()
   })
+
+  it('should create an action representing comments reset', () => {
+    expect(actions.reset()).toMatchSnapshot()
+  })
 })

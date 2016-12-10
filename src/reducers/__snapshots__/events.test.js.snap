@@ -2,12 +2,10 @@ exports[`events reducer should handle FETCH_EVENT_DETAILS_FAILURE 1`] = `
 Object {
   "count": 0,
   "error": [Error: Fetch event details failure],
-  "eventComments": Array [],
   "eventCount": 0,
   "eventDetails": null,
   "events": Array [],
   "isLoading": false,
-  "page": 0,
 }
 `;
 
@@ -15,12 +13,10 @@ exports[`events reducer should handle FETCH_EVENT_DETAILS_REQUEST 1`] = `
 Object {
   "count": 0,
   "error": null,
-  "eventComments": Array [],
   "eventCount": 0,
   "eventDetails": 1,
   "events": Array [],
   "isLoading": false,
-  "page": 0,
 }
 `;
 
@@ -28,7 +24,6 @@ exports[`events reducer should handle FETCH_EVENT_DETAILS_SUCCESS 1`] = `
 Object {
   "count": 0,
   "error": null,
-  "eventComments": Array [],
   "eventCount": 0,
   "eventDetails": Object {
     "UserId": 1,
@@ -44,7 +39,6 @@ Object {
   },
   "events": Array [],
   "isLoading": false,
-  "page": 0,
 }
 `;
 
@@ -52,12 +46,10 @@ exports[`events reducer should handle FETCH_EVENTS_FAILURE 1`] = `
 Object {
   "count": 0,
   "error": [Error: Fetch events failed.],
-  "eventComments": Array [],
   "eventCount": 0,
   "eventDetails": null,
   "events": Array [],
   "isLoading": false,
-  "page": 0,
 }
 `;
 
@@ -65,12 +57,10 @@ exports[`events reducer should handle FETCH_EVENTS_REQUEST 1`] = `
 Object {
   "count": 0,
   "error": null,
-  "eventComments": Array [],
   "eventCount": 0,
   "eventDetails": null,
   "events": Array [],
   "isLoading": true,
-  "page": 0,
 }
 `;
 
@@ -78,7 +68,6 @@ exports[`events reducer should handle FETCH_EVENTS_SUCCESS 1`] = `
 Object {
   "count": 2,
   "error": null,
-  "eventComments": Array [],
   "eventCount": 2,
   "eventDetails": null,
   "events": Array [
@@ -108,7 +97,6 @@ Object {
     },
   ],
   "isLoading": false,
-  "page": 0,
 }
 `;
 
@@ -116,12 +104,10 @@ exports[`events reducer should handle INCREASE_PAGE 1`] = `
 Object {
   "count": 0,
   "error": null,
-  "eventComments": Array [],
   "eventCount": 0,
   "eventDetails": null,
   "events": Array [],
   "isLoading": false,
-  "page": 1,
 }
 `;
 
@@ -129,11 +115,9 @@ exports[`events reducer should return the initial state 1`] = `
 Object {
   "count": 0,
   "error": null,
-  "eventComments": Array [],
   "eventCount": 0,
   "eventDetails": null,
   "events": Array [],
   "isLoading": false,
-  "page": 0,
 }
 `;

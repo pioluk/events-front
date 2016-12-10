@@ -49,6 +49,12 @@ Object {
 }
 `;
 
+exports[`comments actions should create an action representing comments reset 1`] = `
+Object {
+  "type": "RESET_COMMENTS",
+}
+`;
+
 exports[`comments actions should create an action representing text to create comment 1`] = `
 Object {
   "eventId": 1,
@@ -60,8 +66,7 @@ Object {
 exports[`comments actions should create an action to fetch comments 1`] = `
 Object {
   "eventId": 1,
-  "limit": 20,
-  "offset": 0,
+  "page": 20,
   "type": "FETCH_COMMENTS",
 }
 `;
