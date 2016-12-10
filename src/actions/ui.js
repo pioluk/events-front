@@ -1,8 +1,7 @@
-export function selectEvent(color, thumbnail, image) {
+export function selectEvent(color, image) {
   return {
     type: 'SELECT_EVENT',
     color,
-    thumbnail,
     image
   }
 }

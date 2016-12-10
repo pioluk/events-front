@@ -26,7 +26,7 @@ export function* getEventDetailsFlow () {
       const eventDetails = yield call(getEvent, eventId)
       if (eventDetails) {
         yield put(actions.fetchEventDetailsSuccess(eventDetails))
-        yield put(selectEvent('#' + eventDetails.color, eventDetails.imageThumbnail, eventDetails.image))
+        yield put(selectEvent(eventDetails.color, eventDetails.image))
       }
     }
     catch (err) {

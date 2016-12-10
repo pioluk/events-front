@@ -1,0 +1,13 @@
+exports[`ui reducer should handle SELECT_EVENT 1`] = `
+Object {
+  "selectedEventColor": "#a5aaf2",
+  "selectedEventImage": "ec8672d6-3787-4ce6-a35b-715d012f23e4.jpg",
+}
+`;
+
+exports[`ui reducer should return the initial state 1`] = `
+Object {
+  "selectedEventColor": null,
+  "selectedEventImage": null,
+}
+`;

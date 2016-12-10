@@ -1,8 +1,7 @@
 exports[`ui actions should create an action to select an event 1`] = `
 Object {
-  "color": "red",
-  "image": "http://example.com/image.png",
-  "thumbnail": "/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAMCAgICAgMCAgIDAwMDBAYEBAQEBAgGBgUGCQgKCgkICQkKDA8MCgsOCwkJDRENDg8QEBEQCgwSExIQEw8QEBD/wAALCAABAAEBAREA/8QAFAABAAAAAAAAAAAAAAAAAAAACf/EABQQAQAAAAAAAAAAAAAAAAAAAAD/2gAIAQEAAD8AVN//2Q==",
+  "color": "#a5aaf2",
+  "image": "ec8672d6-3787-4ce6-a35b-715d012f23e4.jpg",
   "type": "SELECT_EVENT",
 }
 `;

@@ -60,7 +60,7 @@ describe('events sagas', () => {
       .toEqual(put(eventActions.fetchEventDetailsSuccess(eventDetails)))
 
     expect(generator.next().value)
-      .toEqual(put(selectEvent('#' + eventDetails.color, eventDetails.imageThumbnail, eventDetails.imageBig)))
+      .toEqual(put(selectEvent(eventDetails.color, eventDetails.image)))
 
     expect(generator.next().value).toEqual(take(FETCH_EVENT_DETAILS_REQUEST))
   })

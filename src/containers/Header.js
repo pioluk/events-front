@@ -81,7 +81,6 @@ const mapStateToProps = state => {
     isEventDetails,
     isAuthenticated: state.auth.isAuthenticated,
     color: ui.selectedEventColor || '#1976d2',
-    thumbnail: !!ui.selectedEventThumbnail && ('data:image/jpeg;base64,' + ui.selectedEventThumbnail),
     image: ui.selectedEventImage
   }
 }

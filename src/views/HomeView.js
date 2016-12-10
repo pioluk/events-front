@@ -27,7 +27,7 @@ class HomeView extends Component {
 
   navigateToEvent = (event: any) => {
     this.props.router.push(`/event/${event.id}`)
-    this.props.selectEvent(event.color, event.imageThumbnail, event.imageBig)
+    this.props.selectEvent(event.color, event.image)
   }
 
   handleEventClick = (event: any) => {
@@ -80,7 +80,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   fetchEventsRequest: page => dispatch(fetchEventsRequest(page)),
-  selectEvent: (color, thumbnail, image) => dispatch(selectEvent(color, thumbnail, image))
+  selectEvent: (color, image) => dispatch(selectEvent(color, image))
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(HomeView))
