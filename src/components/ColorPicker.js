@@ -1,7 +1,7 @@
 /* @flow */
 
 import React, { Component, PropTypes } from 'react'
-import RaisedButton from 'material-ui/RaisedButton'
+import { Button } from 'react-toolbox/lib/button'
 import Popover from 'material-ui/Popover'
 import { ChromePicker } from 'react-color'
 
@@ -64,13 +64,15 @@ class ColorPicker extends Component {
       color: color.hex
     })
 
-    typeof this.props.onChange === 'function'
-      && this.props.onChange(null, color.hex)
+    if (this.props.onChange === 'function') {
+      this.props.onChange(null, color.hex)
+    }
   }
 
   handleChangeComplete = (color: any) => {
-    typeof this.props.onChangeComplete === 'function'
-      && this.props.onChangeComplete(null, color.hex)
+    if (this.props.onChangeComplete === 'function') {
+      this.props.onChangeComplete(null, color.hex)
+    }
   }
 
   render() {
@@ -82,12 +84,10 @@ class ColorPicker extends Component {
     return (
       <div style={styles.root}>
         <span style={styles.label}>{label}</span>
-        <RaisedButton
+        <Button
           style={buttonStyle}
-          overlayStyle={buttonStyle}
-          labelStyle={styles.buttonLabel}
-          label={' '}
-          onTouchTap={this.handleTouchTap} />
+          ripple={false}
+          onClick={this.handleTouchTap} />
         <Popover
           open={this.state.opened}
           anchorEl={this.state.anchorEl}
