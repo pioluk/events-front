@@ -8,9 +8,12 @@ import ProgressBar from 'react-toolbox/lib/progress_bar'
 import IconLabel from '../components/IconLabel'
 import * as eventActions from '../actions/events'
 import * as commentActions from '../actions/comments'
-import { detailsViewWrapper, eventView, eventTitle, progressBar } from './EventDetailsView.scss'
-import MapPreview from '../components/MapPreview'
+import { detailsViewWrapper, eventView, eventTitle, progressBar, additional, additionalColumn } from './EventDetailsView.scss'
+// import MapPreview from '../components/MapPreview'
 import Comments from '../components/Comments'
+import Email from '../components/Email'
+import Phone from '../components/Phone'
+import Website from '../components/Website'
 import { COMMENT_PAGE_SIZE } from '../config'
 
 class EventDetailsView extends Component {
@@ -58,6 +61,17 @@ class EventDetailsView extends Component {
           </div>
           <div style={{ flex: 1 }}>
             <IconLabel title="To" icon="schedule">{this.renderDate(event.dateEnd)}</IconLabel>
+          </div>
+        </div>
+        <div className={additional}>
+          <div className={additionalColumn}>
+            {event.Emails.map(email => <Email email={email.address} />)}
+          </div>
+          <div className={additionalColumn}>
+            {event.Phones.map(phone => <Phone phone={phone.number} />)}
+          </div>
+          <div className={additionalColumn}>
+            {event.Websites.map(website => <Website website={website.address} />)}
           </div>
         </div>
         <div>{event.description}</div>

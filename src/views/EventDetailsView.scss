@@ -52,3 +52,15 @@ $break-sm: 520px;
   display: block;
   margin: 180px auto;
 }
+
+.additional {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 25px
+}
+
+.additionalColumn {
+  flex: 1;
+  min-width: 150px;
+  max-width: 250px;
+}
