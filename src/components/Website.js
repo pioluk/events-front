@@ -11,7 +11,7 @@ const Website = ({ website }) => (
 )
 
 Website.propTypes = {
-  email: PropTypes.string.isRequired
+  website: PropTypes.string.isRequired
 }
 
 export default Website

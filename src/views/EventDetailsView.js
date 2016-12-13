@@ -9,7 +9,7 @@ import IconLabel from '../components/IconLabel'
 import * as eventActions from '../actions/events'
 import * as commentActions from '../actions/comments'
 import { detailsViewWrapper, eventView, eventTitle, progressBar, additional, additionalColumn } from './EventDetailsView.scss'
-// import MapPreview from '../components/MapPreview'
+import Place from '../components/Place'
 import Comments from '../components/Comments'
 import Email from '../components/Email'
 import Phone from '../components/Phone'
@@ -63,15 +63,16 @@ class EventDetailsView extends Component {
             <IconLabel title="To" icon="schedule">{this.renderDate(event.dateEnd)}</IconLabel>
           </div>
         </div>
+        <Place place={event.Place} />
         <div className={additional}>
           <div className={additionalColumn}>
-            {event.Emails.map(email => <Email email={email.address} />)}
+            {event.Emails.map(email => <Email key={email.id} email={email.address} />)}
           </div>
           <div className={additionalColumn}>
-            {event.Phones.map(phone => <Phone phone={phone.number} />)}
+            {event.Phones.map(phone => <Phone key={phone.id} phone={phone.number} />)}
           </div>
           <div className={additionalColumn}>
-            {event.Websites.map(website => <Website website={website.address} />)}
+            {event.Websites.map(website => <Website key={website.id} website={website.address} />)}
           </div>
         </div>
         <div>{event.description}</div>
