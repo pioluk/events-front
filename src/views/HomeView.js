@@ -9,7 +9,7 @@ import LoadMoreButton from '../components/LoadMoreButton'
 import Fab from '../components/Fab'
 import { fetchEventsRequest } from '../actions/events'
 import { selectEvent } from '../actions/ui'
-import { homeView } from './HomeView.scss'
+import { homeView, eventList } from './HomeView.scss'
 import { progressBar } from './EventDetailsView.scss'
 import { EVENT_PAGE_SIZE } from '../config'
 
@@ -42,7 +42,7 @@ class HomeView extends Component {
     const { events, isLoading, count, eventCount } = this.props
 
     return (
-      <div>
+      <div className={eventList}>
         <EventList events={events} onEventClick={this.handleEventClick} />
         { eventCount < count
             && <LoadMoreButton loading={isLoading} onClick={this.handleLoadMore} />
