@@ -1,0 +1,26 @@
+.wrapper {
+  padding: 16px 12px;
+  color: rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.icon {
+  position: relative;
+  top: 5;
+  margin-right: 12px;
+  fill: rgba(0, 0, 0, 0.3);
+}
+
+.dropzone {
+  border-width: 2px;
+  border-color: rgba(0, 0, 0, 0.3);
+  border-style: dashed;
+  border-radius: 4px;
+  height: 40px;
+  padding: 16px 12px;
+  text-align: center
+}
+
+.image {
+  max-height: 200px;
+}

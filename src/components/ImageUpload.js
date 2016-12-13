@@ -3,30 +3,16 @@
 import React, { Component, PropTypes } from 'react'
 import Dropzone from 'react-dropzone'
 import CloudUpload from 'material-ui/svg-icons/file/cloud-upload'
+import { wrapper, icon, image } from './ImageUpload.scss'
 
 const styles = {
-  root: {
-    padding: '16px 12px',
-    color: 'rgba(0, 0, 0, 0.298039)',
-    cursor: 'pointer'
-  },
-  icon: {
-    position: 'relative',
-    top: 5,
-    marginRight: 12,
-    fill: 'rgba(0, 0, 0, 0.298039)'
-  },
   dropzone: {
     borderWidth: 2,
     borderColor: 'rgba(0, 0, 0, 0.298039)',
     borderStyle: 'dashed',
     borderRadius: 4,
-    height: 40,
     padding: '16px 12px',
     textAlign: 'center',
-  },
-  image: {
-    maxHeight: 200
   }
 }
 
@@ -57,7 +43,7 @@ export default class ImageUpload extends Component {
   renderImage = (file: File) => {
     return (
       <div>
-        <img src={file.preview} style={styles.image} alt="File to upload" />
+        <img src={file.preview} className={image} alt="File to upload" />
       </div>
     )
   }
@@ -66,11 +52,11 @@ export default class ImageUpload extends Component {
     const isFileSelected = this.state.file !== null
 
     const dropzoneStyles = isFileSelected
-      ? Object.assign({}, styles.dropzone, { height: 'auto', maxHeight: 200 })
+      ? Object.assign({}, styles.dropzone, { height: 'auto' })
       : styles.dropzone
 
     return (
-      <div style={styles.root}>
+      <div className={wrapper}>
         <Dropzone
           style={dropzoneStyles}
           accept="image/*"
@@ -78,7 +64,7 @@ export default class ImageUpload extends Component {
           { isFileSelected
               ? this.renderImage(this.state.file)
               : <div>
-                  <CloudUpload style={styles.icon} />
+                  <CloudUpload className={icon} />
                   Drag and drop an image here or click
                 </div>
           }
