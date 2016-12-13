@@ -35,6 +35,9 @@ export const createEvent = event => {
 
   return fetch(`${API_URL}/event`, {
     method: 'POST',
+    headers: {
+      Authorization: `Bearer ${localStorage.token}`
+    },
     body: formData
   })
   .then(response => {
