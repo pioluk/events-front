@@ -11,7 +11,7 @@ const EventTile = ({ event, ...props }) => (
   <div className={tile} {...props}>
     <LazyImage
       keepAspect={true}
-      height={150}
+      height={158}
       color={'#' + event.color}
       small={IMG_PREFIX_NANO + event.image}
       image={IMG_PREFIX_XLARGE + event.image} />
