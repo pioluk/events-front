@@ -36,7 +36,7 @@ class Header extends Component {
   }
 
   render() {
-    const { isAuthenticated, isEventDetails } = this.props
+    const { actions, color, image, isAuthenticated, isEventDetails } = this.props
 
     if (isEventDetails && this.node !== null) {
       this.node.style.background = 'rgba(0, 0, 0, 0.2)'
@@ -50,16 +50,17 @@ class Header extends Component {
           isAuthenticated={isAuthenticated}
           onMenuToggle={this.handleMenuToggle}
           onLoginClick={this.navigateToLogin}
-          onLogoutClick={this.props.actions.logout}>
+          onLogoutClick={actions.logout}>
         </AppBar>
         { isEventDetails &&
           <LazyImage
+            key={image}
             keepAspect={false}
             width="100%"
             height={320}
-            color={this.props.color}
-            small={'http://pioluk-event-images-processed.s3-website.eu-central-1.amazonaws.com/nano/' + this.props.image}
-            image={'http://pioluk-event-images-processed.s3-website.eu-central-1.amazonaws.com/large/' + this.props.image}
+            color={color}
+            small={'http://pioluk-event-images-processed.s3-website.eu-central-1.amazonaws.com/nano/' + image}
+            image={'http://pioluk-event-images-processed.s3-website.eu-central-1.amazonaws.com/large/' + image}
             style={{position: 'absolute', top: 0, left: 0}} />
         }
         <AppMenu

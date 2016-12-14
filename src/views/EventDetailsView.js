@@ -53,7 +53,7 @@ class EventDetailsView extends Component {
 
   renderEvent = (event: any, comments: any[], commentCount: number, isLoadingComments: boolean) => {
     return (
-      <div className={eventView}>
+      <div key={event.id} className={eventView}>
         <h3 className={eventTitle}>{event.title}</h3>
         <div style={{ display: 'flex', marginTop: 15, marginBottom: 15 }}>
           <div style={{ flex: 1 }}>
