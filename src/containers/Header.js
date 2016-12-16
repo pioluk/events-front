@@ -8,6 +8,7 @@ import AppBar from '../components/AppBar'
 import AppMenu from '../components/AppMenu'
 import LazyImage from '../components/LazyImage'
 import * as actionCreators from '../actions/auth'
+import { IMG_PREFIX_NANO, IMG_PREFIX_LARGE } from '../config'
 
 class Header extends Component {
 
@@ -59,8 +60,8 @@ class Header extends Component {
             width="100%"
             height={320}
             color={color}
-            small={'http://pioluk-event-images-processed.s3-website.eu-central-1.amazonaws.com/nano/' + image}
-            image={'http://pioluk-event-images-processed.s3-website.eu-central-1.amazonaws.com/large/' + image}
+            small={IMG_PREFIX_NANO + image}
+            image={IMG_PREFIX_LARGE + image}
             style={{position: 'absolute', top: 0, left: 0}} />
         }
         <AppMenu
