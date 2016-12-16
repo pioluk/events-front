@@ -1,6 +1,6 @@
 /* @flow */
 
-import { API_URL } from './config'
+import { API_URL } from '../config'
 
 const parseJSON = response => response.json()
 
