@@ -1,4 +1,4 @@
-export const API_URL = '//api.pioluk.me'
+export const API_URL = process.env.NODE_ENV === 'production' ? '//api.pioluk.me' : '//localhost:3000'
 export const EVENT_PAGE_SIZE = 24
 export const COMMENT_PAGE_SIZE = 50
 export const IMG_PREFIX_NANO = 'http://pioluk-event-images-processed.s3-website.eu-central-1.amazonaws.com/nano/'
