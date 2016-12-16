@@ -1,5 +1,7 @@
 /* @flow */
 
+require('offline-plugin/runtime').install()
+
 import 'react-toolbox/lib/commons.scss'
 import React from 'react'
 import { render } from 'react-dom'

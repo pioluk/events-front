@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const OfflinePlugin = require('offline-plugin')
 
 module.exports = {
   context: __dirname,
@@ -84,5 +85,27 @@ module.exports = {
         screw_ie8: true
       }
     }),
+    new OfflinePlugin({
+     relativePaths: false,
+     publicPath: '/',
+
+     // No need to cache .htaccess. See http://mxs.is/googmp,
+     // this is applied before any match in `caches` section
+     excludes: ['.htaccess'],
+
+     caches: {
+       main: [':rest:'],
+
+       // All chunks marked as `additional`, loaded after main section
+       // and do not prevent SW to install. Change to `optional` if
+       // do not want them to be preloaded at all (cached only when first loaded)
+       additional: ['*.chunk.js'],
+     },
+
+     // Removes warning for about `additional` section usage
+     safeToUseOptionalCaches: true,
+
+     AppCache: false,
+   })
   ]
 };
