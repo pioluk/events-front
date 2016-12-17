@@ -9,8 +9,7 @@ import LoadMoreButton from '../components/LoadMoreButton'
 import Fab from '../components/Fab'
 import { fetchEventsRequest } from '../actions/events'
 import { selectEvent } from '../actions/ui'
-import { homeView, eventList } from './HomeView.scss'
-import { progressBar } from './EventDetailsView.scss'
+import { homeView, eventList, progressBar } from './HomeView.scss'
 import { EVENT_PAGE_SIZE } from '../config'
 
 class HomeView extends Component {
