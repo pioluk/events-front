@@ -9,8 +9,7 @@ export default class EventList extends Component {
   state: { layout: any }
 
   static propTypes = {
-    events: PropTypes.array.isRequired,
-    onEventClick: PropTypes.func.isRequired
+    events: PropTypes.array.isRequired
   }
 
   render () {

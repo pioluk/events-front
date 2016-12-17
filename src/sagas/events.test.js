@@ -42,7 +42,9 @@ describe('events sagas', () => {
     expect(generator.next().value).toEqual(take(FETCH_EVENT_DETAILS_REQUEST))
 
     const eventId = 1
-    expect(generator.next({ eventId }).value).toEqual(call(getEvent, eventId))
+    expect(generator.next({ eventId }).value).toEqual(put(eventActions.resetEventsNearby()))
+
+    expect(generator.next().value).toEqual(call(getEvent, eventId))
 
     const eventDetails = {
       id: 1,
@@ -65,13 +67,15 @@ describe('events sagas', () => {
     expect(generator.next().value).toEqual(take(FETCH_EVENT_DETAILS_REQUEST))
   })
 
-  it('getEventDetailsFlow success', () => {
+  it('getEventDetailsFlow failure', () => {
     const generator = getEventDetailsFlow()
 
     expect(generator.next().value).toEqual(take(FETCH_EVENT_DETAILS_REQUEST))
 
     const eventId = 1
-    expect(generator.next({ eventId }).value).toEqual(call(getEvent, eventId))
+    expect(generator.next({ eventId }).value).toEqual(put(eventActions.resetEventsNearby()))
+
+    expect(generator.next().value).toEqual(call(getEvent, eventId))
 
     const error = new Error('Error fetching event.')
     expect(generator.throw(error).value).toEqual(put(eventActions.fetchEventDetailsFailure(error)))

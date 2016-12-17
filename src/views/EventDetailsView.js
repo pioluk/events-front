@@ -2,19 +2,11 @@
 
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import fecha from 'fecha'
-import Card from 'react-toolbox/lib/card'
-import ProgressBar from 'react-toolbox/lib/progress_bar'
-import IconLabel from '../components/IconLabel'
+import { withRouter } from 'react-router'
 import * as eventActions from '../actions/events'
 import * as commentActions from '../actions/comments'
-import { detailsViewWrapper, eventView, eventTitle, progressBar, additional, additionalColumn } from './EventDetailsView.scss'
-import Place from '../components/Place'
-import Comments from '../components/Comments'
-import Email from '../components/Email'
-import Phone from '../components/Phone'
-import Website from '../components/Website'
 import { COMMENT_PAGE_SIZE } from '../config'
+import EventDetails from '../components/EventDetails'
 
 class EventDetailsView extends Component {
 
@@ -39,6 +31,13 @@ class EventDetailsView extends Component {
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props.params.id !== nextProps.params.id) {
+      this.eventId = nextProps.params.id
+      this.props.fetchEvent(this.eventId)
+    }
+  }
+
   loadComments = () => {
     this.props.fetchComments(this.eventId, this.props.page + 1)
   }
@@ -47,57 +46,23 @@ class EventDetailsView extends Component {
     this.props.addComment(this.eventId, text)
   }
 
-  renderDate = (date: string) => {
-    return fecha.format(new Date(date), 'MMM D, YYYY HH:mm')
-  }
-
-  renderEvent = (event: any, comments: any[], commentCount: number, isLoadingComments: boolean) => {
-    return (
-      <div key={event.id} className={eventView}>
-        <h3 className={eventTitle}>{event.title}</h3>
-        <div style={{ display: 'flex', marginTop: 15, marginBottom: 15 }}>
-          <div style={{ flex: 1 }}>
-            <IconLabel title="From" icon="schedule">{this.renderDate(event.dateStart)}</IconLabel>
-          </div>
-          <div style={{ flex: 1 }}>
-            <IconLabel title="To" icon="schedule">{this.renderDate(event.dateEnd)}</IconLabel>
-          </div>
-        </div>
-        <Place place={event.Place} />
-        <div className={additional}>
-          <div className={additionalColumn}>
-            {event.Emails.map(email => <Email key={email.id} email={email.address} />)}
-          </div>
-          <div className={additionalColumn}>
-            {event.Phones.map(phone => <Phone key={phone.id} phone={phone.number} />)}
-          </div>
-          <div className={additionalColumn}>
-            {event.Websites.map(website => <Website key={website.id} website={website.address} />)}
-          </div>
-        </div>
-        <div>{event.description}</div>
-        <Comments
-          comments={comments}
-          isLoading={isLoadingComments}
-          commentCount={commentCount}
-          onAdd={this.handleAdd}
-          onLoadMore={this.loadComments} />
-      </div>
-    )
+  loadNearbyEvents = () => {
+    this.props.fetchNearbyEvents(this.eventId)
   }
 
   render() {
-    const { event, comments, totalCount, isLoadingComments } = this.props
+    const { event, comments, totalCount, nearbyEvents, isLoadingComments } = this.props
 
     return (
-      <div className={detailsViewWrapper}>
-        <Card raised>
-          { !!event
-              ? this.renderEvent(event, comments, totalCount, isLoadingComments)
-              : <ProgressBar className={progressBar} type="circular" mode="indeterminate" />
-          }
-        </Card>
-      </div>
+      <EventDetails
+        event={event}
+        comments={comments}
+        commentCount={totalCount}
+        isLoadingComments={isLoadingComments}
+        nearbyEvents={nearbyEvents}
+        onAdd={this.handleAdd}
+        onLoadMore={this.loadComments}
+        onShowNearbyEvents={this.loadNearbyEvents} />
     )
   }
 
@@ -108,13 +73,15 @@ const mapStateToProps = state => ({
   event: state.events.eventDetails,
   comments: state.comments.comments,
   totalCount: state.comments.totalCount,
-  isLoadingComments: state.comments.isLoading
+  isLoadingComments: state.comments.isLoading,
+  nearbyEvents: state.events.nearbyEvents
 })
 
 const bindActionCreators = dispatch => ({
   fetchEvent: id => dispatch(eventActions.fetchEventDetailsReqeust(id)),
   fetchComments: (id, page) => dispatch(commentActions.fetchComments(id, page)),
-  addComment: (id, text) => dispatch(commentActions.addComment(id, text))
+  addComment: (id, text) => dispatch(commentActions.addComment(id, text)),
+  fetchNearbyEvents: id => dispatch(eventActions.fetchEventsNearby(id)),
 })
 
-export default connect(mapStateToProps, bindActionCreators)(EventDetailsView)
+export default withRouter(connect(mapStateToProps, bindActionCreators)(EventDetailsView))

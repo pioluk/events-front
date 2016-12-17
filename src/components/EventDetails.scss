@@ -6,6 +6,7 @@ $break-sm: 520px;
   width: 900px;
   margin: 0 auto;
   margin-top: 90px;
+  margin-bottom: 45px;
 
   @media screen and (max-width: $break-lg) {
     width: 680px;
@@ -20,6 +21,7 @@ $break-sm: 520px;
     [data-react-toolbox="card"] {
       border-radius: 0;
     }
+    margin-bottom: 0;
   }
 }
 
@@ -63,4 +65,14 @@ $break-sm: 520px;
   flex: 1;
   min-width: 150px;
   max-width: 250px;
+}
+
+.nearbyEventsWrapper {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.showNearbyEvents {
+  width: 100%;
+  margin-bottom: 20px;
 }

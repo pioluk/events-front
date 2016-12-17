@@ -62,7 +62,8 @@ class Header extends Component {
             color={color}
             small={IMG_PREFIX_NANO + image}
             image={IMG_PREFIX_LARGE + image}
-            style={{position: 'absolute', top: 0, left: 0}} />
+            style={{position: 'absolute', top: 0, left: 0}}
+            below />
         }
         <AppMenu
           opened={this.state.menuOpened}

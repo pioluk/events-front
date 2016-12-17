@@ -59,7 +59,7 @@ export default class LazyImage extends Component {
   }
 
   render() {
-    const { alt, color, small, style, keepAspect, image, width, height } = this.props
+    const { alt, color, small, style, keepAspect, image, width, height, below } = this.props
 
     const imageVisible = !!this.state.largeImage
 
@@ -74,7 +74,7 @@ export default class LazyImage extends Component {
       margin: 0,
       overflow: 'hidden',
       position: 'relative',
-      zIndex: -1
+      zIndex: below ? -1 : 0
     }, style || {})
 
     const imageStyle = {

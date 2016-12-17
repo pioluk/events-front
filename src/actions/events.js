@@ -10,7 +10,11 @@ import {
   FETCH_EVENT_DETAILS_REQUEST,
   FETCH_EVENT_DETAILS_SUCCESS,
   FETCH_EVENT_DETAILS_FAILURE,
-  INCREASE_PAGE
+  INCREASE_PAGE,
+  RESET_EVENTS_NEARBY,
+  FETCH_EVENTS_NEARBY,
+  FETCH_EVENTS_NEARBY_SUCCESS,
+  FETCH_EVENTS_NEARBY_FAILURE
 } from '../constants/events'
 
 export function fetchEventsRequest (page: number) {
@@ -80,5 +84,25 @@ export function fetchEventDetailsFailure (error: Error) {
 export function increasePage () {
   return {
     type: INCREASE_PAGE
+  }
+}
+
+export function resetEventsNearby () {
+  return {
+    type: RESET_EVENTS_NEARBY
+  }
+}
+
+export function fetchEventsNearby (eventId: number) {
+  return {
+    type: FETCH_EVENTS_NEARBY,
+    id: eventId
+  }
+}
+
+export function fetchEventsNearbySuccess (events: Array<any>) {
+  return {
+    type: FETCH_EVENTS_NEARBY_SUCCESS,
+    events
   }
 }

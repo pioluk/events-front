@@ -7,6 +7,8 @@ import {
   FETCH_EVENT_DETAILS_REQUEST,
   FETCH_EVENT_DETAILS_SUCCESS,
   FETCH_EVENT_DETAILS_FAILURE,
+  RESET_EVENTS_NEARBY,
+  FETCH_EVENTS_NEARBY_SUCCESS
 } from '../constants/events'
 
 type Event = any
@@ -17,6 +19,7 @@ type EventsState = {
   eventCount: number,
   eventDetails: ?any,
   events: Array<Event>,
+  nearbyEvents: ?Array<Event>,
   isLoading: boolean,
 }
 
@@ -26,6 +29,7 @@ const initialState: EventsState = {
   eventCount: 0,
   eventDetails: null,
   events: [],
+  nearbyEvents: null,
   isLoading: false,
 }
 
@@ -57,6 +61,18 @@ export default function eventsReducer (state: EventsState = initialState, action
       return {
         ...state,
         error: action.error
+      }
+
+    case RESET_EVENTS_NEARBY:
+      return {
+        ...state,
+        nearbyEvents: null
+      }
+
+    case FETCH_EVENTS_NEARBY_SUCCESS:
+      return {
+        ...state,
+        nearbyEvents: action.events
       }
 
     default:
