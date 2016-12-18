@@ -4,7 +4,6 @@ import {
   FETCH_EVENTS_REQUEST,
   FETCH_EVENTS_SUCCESS,
   FETCH_EVENTS_FAILURE,
-  FETCH_EVENT_DETAILS_REQUEST,
   FETCH_EVENT_DETAILS_SUCCESS,
   FETCH_EVENT_DETAILS_FAILURE,
   RESET_EVENTS_NEARBY,
@@ -36,7 +35,6 @@ const initialState: EventsState = {
 export default function eventsReducer (state: EventsState = initialState, action: any) {
   switch (action.type) {
     case FETCH_EVENTS_REQUEST:
-    case FETCH_EVENT_DETAILS_REQUEST:
       return { ...state, isLoading: true }
 
     case FETCH_EVENTS_SUCCESS:
