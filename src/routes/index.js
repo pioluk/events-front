@@ -8,6 +8,7 @@ import HomeView from '../views/HomeView'
 import LoginView from '../views/LoginView'
 import EventAddView from '../views/EventAddView'
 import EventDetailsView from '../views/EventDetailsView'
+import SearchView from '../views/SearchView'
 import NotFoundView from '../views/NotFoundView'
 
 const routes = (
@@ -15,11 +16,12 @@ const routes = (
     <IndexRoute component={HomeView} />
     <Route path="/login" component={LoginView} />
     <Route path="/event/new" component={requireAuthentication(EventAddView)} />
-    <Route path="event/:id" component={EventDetailsView} />
+    <Route path="/event/:id" component={EventDetailsView} />
+    <Route path="/search" component={SearchView} />
     <Route path="*" component={NotFoundView} />
   </Route>
 )
 
-export default history => (
+export default (history: any) => (
   <Router history={history} routes={routes} />
 )
