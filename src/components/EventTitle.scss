@@ -1,3 +1,5 @@
+$break-sm: 520px;
+
 .tile {
   position: relative;
   overflow: hidden;
@@ -5,6 +7,10 @@
   height: 158px;
   margin-right: 6px;
   margin-bottom: 6px;
+
+  @media screen and (max-width: $break-sm) {
+    margin-right: 0;
+  }
 }
 
 .overlay {
