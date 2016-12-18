@@ -4,8 +4,7 @@ import {
   FETCH_EVENT_DETAILS_REQUEST,
   FETCH_EVENT_DETAILS_SUCCESS,
   ADD_EVENT,
-  FETCH_EVENTS_NEARBY,
-  FETCH_EVENTS_NEARBY_SUCCESS
+  FETCH_EVENTS_NEARBY
 } from '../constants/events'
 import * as actions from '../actions/events'
 import { fetchComments, reset } from '../actions/comments'

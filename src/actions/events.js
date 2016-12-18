@@ -14,7 +14,6 @@ import {
   RESET_EVENTS_NEARBY,
   FETCH_EVENTS_NEARBY,
   FETCH_EVENTS_NEARBY_SUCCESS,
-  FETCH_EVENTS_NEARBY_FAILURE
 } from '../constants/events'
 
 export function fetchEventsRequest (page: number) {
