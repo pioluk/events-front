@@ -1,8 +1,9 @@
 // global describe,it,expect
 
-import { loginFlow } from './auth'
+import { loginFlow, logoutFlow } from './auth'
 import { call, put, take } from 'redux-saga/effects'
-import { LOGIN_REQUEST } from '../constants/auth'
+import { push } from 'react-router-redux'
+import { LOGIN_REQUEST, LOGOUT } from '../constants/auth'
 import { login } from '../api/auth'
 import * as authActions from '../actions/auth'
 import * as notificationsActions from '../actions/notifications'
@@ -50,5 +51,15 @@ describe('auth sagas', () => {
 
     const error = new Error('Login error')
     expect(generator.throw(error).value).toEqual(put(authActions.loginFailure(error)))
+  })
+
+  it('logoutFlow', () => {
+    const generator = logoutFlow()
+
+    expect(generator.next().value).toEqual(take(LOGOUT))
+
+    expect(generator.next().value).toEqual(put(push('/')))
+
+    expect(generator.next().value).toEqual(take(LOGOUT))
   })
 })

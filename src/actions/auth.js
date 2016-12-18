@@ -31,11 +31,6 @@ export function loginFailure (error: Error) {
 }
 
 export function logout () {
-  if ('localStorage' in window) {
-    localStorage.removeItem('user')
-    localStorage.removeItem('token')
-  }
-
   return {
     type: LOGOUT
   }
