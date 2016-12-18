@@ -44,7 +44,6 @@ const createValidatedForm = (initialState: any, validations: Array<any>) => Base
 
       return (
         <div>
-          <pre>{JSON.stringify(props.formData, null, 2)}</pre>
           <BaseComponent { ...props } />
         </div>
       )
