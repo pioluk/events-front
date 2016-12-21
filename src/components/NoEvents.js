@@ -5,7 +5,8 @@ import styled from 'styled-components'
 
 const Wrapper = styled.div`
   display: flex;
-  margin-top: 50px;
+  width: 200px;
+  margin: 50px auto;
 `
 
 const Icon = styled.i`
