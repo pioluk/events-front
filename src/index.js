@@ -1,6 +1,8 @@
 /* @flow */
 
-require('offline-plugin/runtime').install()
+if (process.env.NODE_ENV === 'production') {
+  require('offline-plugin/runtime').install()
+}
 
 import 'react-toolbox/lib/commons.scss'
 import React from 'react'

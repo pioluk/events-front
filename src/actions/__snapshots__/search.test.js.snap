@@ -1,0 +1,46 @@
+exports[`search actions should create an action to reset events search 1`] = `
+Object {
+  "type": "SEARCH_EVENTS_RESET",
+}
+`;
+
+exports[`search actions should create an action to search events 1`] = `
+Object {
+  "page": 1,
+  "query": "lorem",
+  "type": "SEARCH_EVENTS",
+}
+`;
+
+exports[`search actions should create an action to send found events 1`] = `
+Object {
+  "count": 3381,
+  "events": Array [
+    Object {
+      "color": "#36502f",
+      "createdAt": "2016-12-15T14:27:38.554Z",
+      "dateEnd": "2016-12-21T10:50:15.783Z",
+      "dateStart": "2016-12-21T08:50:15.783Z",
+      "description": "Consectetur debitis corporis ratione necessitatibus nihil voluptatem temporibus eos corporis. Pariatur nemo mollitia magnam autem harum. Ipsum enim sit voluptates veniam facere. Hic molestiae aliquid repellendus et aliquid qui aut quo. Aut dolores assumenda voluptatum est illo velit maiores et. Aliquam ut illo ut. Corrupti sint ad consequatur quidem dignissimos fuga. Error est dolores dolores nihil. Quibusdam ratione quisquam ipsam in fugiat. Impedit soluta consectetur ut sapiente commodi expedita. Excepturi molestiae id harum est velit itaque sint sequi. Tenetur cum cupiditate soluta repudiandae id. Tempore sequi debitis quidem et. Rerum qui id ut autem sapiente quibusdam repellendus. Velit sapiente magni consequuntur cum. Pariatur aliquid quo quo ducimus quo recusandae ut reprehenderit animi.",
+      "id": 11083,
+      "image": "8122fbb2-396e-40b7-b5b1-93950ff9bc3d.jpg",
+      "rank": 0.243171,
+      "title": "Consequuntur maxime quia officiis.",
+      "updatedAt": "2016-12-15T14:27:38.554Z",
+    },
+    Object {
+      "color": "#254039",
+      "createdAt": "2016-12-15T13:45:59.207Z",
+      "dateEnd": "2016-12-21T11:42:14.223Z",
+      "dateStart": "2016-12-21T09:42:14.223Z",
+      "description": "Modi assumenda adipisci voluptatem saepe expedita molestiae temporibus fugit veniam. Sapiente qui provident et. Sint ut itaque quidem odit at nesciunt. Enim cum odio nemo minus molestias tempore sunt non. Accusantium recusandae hic quidem harum velit ea. At corporis vitae rerum sunt placeat. Velit aut ea animi dignissimos pariatur officiis dolore. Minima neque ducimus optio id atque ex delectus expedita qui. Earum corporis quo esse minima beatae blanditiis. Exercitationem omnis officia unde mollitia. Atque natus occaecati odit eaque dolor vero recusandae sed. Est doloribus sunt optio quo rerum beatae veritatis earum molestiae. Commodi esse commodi explicabo quaerat provident officia. Qui nam error sit quod beatae itaque maxime quo ut. Exercitationem fuga laboriosam sed necessitatibus sit autem. Voluptate molestiae sed praesentium beatae aut.",
+      "id": 7883,
+      "image": "20161118.jpg",
+      "rank": 0.243171,
+      "title": "Minus officiis voluptatem nihil.",
+      "updatedAt": "2016-12-15T13:45:59.207Z",
+    },
+  ],
+  "type": "SEARCH_EVENTS_SUCCESS",
+}
+`;

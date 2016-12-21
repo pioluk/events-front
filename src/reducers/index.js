@@ -7,14 +7,16 @@ import auth from './auth'
 import events from './events'
 import notifications from './notifications'
 import comments from './comments'
+import search from './search'
 
 const rootReducer = combineReducers({
   auth,
-  events,
   comments,
-  ui,
+  events,
   notifications,
-  routing: routerReducer
+  routing: routerReducer,
+  search,
+  ui
 })
 
 export default rootReducer

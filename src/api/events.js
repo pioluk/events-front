@@ -10,6 +10,9 @@ export const getEvents = (page: number) =>
 export const getEventsNearby = (id: number) =>
   apiGet(`event/${id}/nearby`)
 
+export const searchEvents = (page: number, query: string) =>
+  apiGet(`search/fts?q=${query}&limit=${EVENT_PAGE_SIZE}&offset=${(page - 1) * EVENT_PAGE_SIZE}`)
+
 export const createEvent = event => {
   const user = JSON.parse(localStorage.getItem('user')) || {}
 
