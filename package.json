@@ -1,6 +1,6 @@
 {
   "name": "front",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "author": "Piotr Łukomiak <181423@edu.p.lodz.pl>",
   "private": true,
   "scripts": {
