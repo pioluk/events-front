@@ -13,7 +13,7 @@ const AppBar = ({ onMenuToggle, isAuthenticated, onLoginClick, onLogoutClick, ch
       leftIcon="menu"
       onLeftIconClick={onMenuToggle}
       {...props}>
-    Front
+    Event
     <div className={right}>
       <Link to="/search">
         <IconButton style={{ color: 'white' }} icon="search" raised />
